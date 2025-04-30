@@ -2,6 +2,7 @@ import os
 import time
 import pandas as pd
 
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
@@ -11,6 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from datetime import datetime, timedelta
 
+load_dotenv()
 
 def formatar_ForaHorario(arquivo):
     df = pd.read_csv(arquivo, encoding = "ISO-8859-1", header = 4, sep = ";")
@@ -60,8 +62,11 @@ driver.get("https://rastreioonline.seeflex.com.br/users/login")
 time.sleep(2)
 
 # Preencher login e senha
-usuario = ""
-senha = ""
+usuario = os.getenv("USUARIO")
+senha = os.getenv("SENHA")
+
+print(usuario, senha)
+
 print("por aqui")
 driver.find_element(By.ID, "user_username").send_keys(usuario)
 driver.find_element(By.ID, "password").send_keys(senha)

@@ -15,7 +15,7 @@ from selenium.webdriver.support import expected_conditions as EC
 def formatar_RastreOnline(arquivo):
     df = pd.read_csv(arquivo, encoding="ISO-8859-1", header = 5, sep = ";")
 
-    df = df.dropna(axis=0)
+    df = df.drop(df.index[-1])
     df = df[df["Data Inicial"] != '""']
 
     df["Data Inicial"] = pd.to_datetime(df['Data Inicial'], dayfirst=True)
@@ -76,7 +76,7 @@ def formatar_RastreOnline(arquivo):
 
 def formatar_Ociosidade(arquivo):
     df = pd.read_csv(arquivo, encoding="ISO-8859-1", header = 5, sep = ";")
-    df = df.dropna(axis=0)
+    df = df.drop(df.index[-1])
     
     def format_df(row):
         def format_placa(placa):
@@ -90,19 +90,23 @@ def formatar_Ociosidade(arquivo):
                 placa = placa
             return placa.upper()
 
+        def format_time(duracao):
+            hh, mm, ss = duracao.split(':')
+            segundos = ((int(hh) * 60 + int(mm)) * 60) + int(ss)
+            return int(segundos // 60)
+
+
         row["Veículo"] = row["Veículo"].replace(" ", "").replace("-", "")
         
         row["Data Inicial"] = pd.to_datetime(row["Data Inicial"], dayfirst=True)
         row["Data Inicial"] = row["Data Inicial"].strftime("%d/%m/%Y %H:%M:%S")
         row["Data Final"] = pd.to_datetime(row["Data Final"], dayfirst=True)
         row["Data Final"] = row["Data Final"].strftime("%d/%m/%Y %H:%M:%S")
+        row["Duração Minutos"] = format_time(row["Duração"])
         row["Duração"] = pd.to_datetime(row["Duração"])
 
-        if pd.api.types.is_timedelta64_dtype(row["Duração"]):
-                row["Duração"] = row["Duração"].astype("timedelta64[s]").dt.total_seconds()
-                row["Duração"] = pd.to_datetime(row["Duração"], unit="s").strftime("%H:%M:%S")
-        else:
-                row["Duração"] = row["Duração"].strftime("%H:%M:%S") 
+        row["Duração"] = row["Duração"].strftime("%H:%M:%S") 
+        
         row["Placa"] = format_placa(row["Placa"])
         return row
 
@@ -112,12 +116,12 @@ def formatar_Ociosidade(arquivo):
         "Veículo": "TAG",
         "Endereço": "Localização",
         "Placa": "PLACA",
-        "Duração": "DURAÇÃO",
+        "Duração": "Tempo Ocioso",
         "Data Inicial": "DATA INICIAL",
         "Data Final": "DATA FINAL",
     })
-
-    df = df[["DATA INICIAL", "DATA FINAL", "TAG", "Localização", "PLACA", "DURAÇÃO"]]
+    
+    df = df[["DATA INICIAL", "DATA FINAL", "TAG", "Localização", "PLACA", "Tempo Ocioso", "Duração Minutos"]]
     
     nome_teste = "Ociosidade"
     diretorio_arquivo = os.path.dirname(arquivo)
@@ -132,7 +136,7 @@ def formatar_Ociosidade(arquivo):
   
 def formatar_ForaHorario(arquivo):
     df = pd.read_csv(arquivo, encoding = "ISO-8859-1", header = 4, sep = ";")
-    df = df.dropna(axis=0)
+    df = df.drop(df.index[-1])
 
     df["DATA"] = pd.to_datetime(df["Data Inicial"], dayfirst=True)
     df["HORA"] = df["DATA"].dt.strftime("%H:%M:%S")
@@ -149,7 +153,17 @@ def formatar_ForaHorario(arquivo):
         "Km Percorrida": "KM PERCORRIDO",
     }, inplace=True)
 
-    df = df[["DATA", "HORA", "TAG", "KM PERCORRIDO", "LOCALIZAÇÃO", "PLACA"]]
+    hoje = datetime.today().date()
+
+    # Definir a data limite como um objeto datetime
+    data_limite = datetime(2025, 6, 30).date()
+
+    # Fazer a comparação de datas
+    if hoje >= data_limite:
+        df = df[~df["TAG"].isin(["CB258", "CB170", "CE22"])]
+        
+    print("Ordenando as Colunas")
+    df = df[["DATA", "HORA", "TAG", "LOCALIZAÇÃO", "PLACA"]]
 
     diretorio_arquivo = os.path.dirname(arquivo)
     
@@ -163,7 +177,7 @@ def formatar_ForaHorario(arquivo):
 
 def selecionar_formatacao(download_path, arquivo):
     print("selecionando arquivo")
-    if "Tempo_Ocioso_2" in arquivo:
+    if "Tempo_Ocioso" in arquivo:
         formatar_Ociosidade(os.path.join(download_path, arquivo))
 
     elif "Velocidade_(Relatorio_para_robo)" in arquivo:
@@ -179,12 +193,12 @@ PASSWORD = os.getenv("SENHA")
 
 DOWNLOAD_PATH = r"C:\Users\edeconsil\Downloads"  
 BASES = [
-    ("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
-    ("Tempo_Ocioso_2", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
-    ("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
+    #("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
+    ("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
+    ("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
+    #("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
     ]
 TIMEOUT = 120  
-
 
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
@@ -333,6 +347,7 @@ def login(download_path, nome_base, nome_caminho):
 
     print("Clicando no botão de relatório...")
     botao_relatorio = driver.find_element(By.XPATH, f'//a[contains(@href, "{nome_caminho}")]')
+    print(f"\n{botao_relatorio}\n")
     botao_relatorio.click()
     print("Botão clicado")
     time.sleep(5)
@@ -343,6 +358,7 @@ def login(download_path, nome_base, nome_caminho):
 
 
 for nome_base, nome_caminho in BASES:
+    print(f"\n{nome_caminho}\n")
     try:
         download_path = DOWNLOAD_PATH
         login(download_path, nome_base, nome_caminho)
