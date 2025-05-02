@@ -177,7 +177,7 @@ def formatar_ForaHorario(arquivo):
 
 def selecionar_formatacao(download_path, arquivo):
     print("selecionando arquivo")
-    if "Tempo_Ocioso" in arquivo:
+    if "Tempo_Ocioso_veiculos_de_12v" in arquivo or "Tempo_Ocioso_veiculos_de_24v" in arquivo:
         formatar_Ociosidade(os.path.join(download_path, arquivo))
 
     elif "Velocidade_(Relatorio_para_robo)" in arquivo:
@@ -194,9 +194,9 @@ PASSWORD = os.getenv("SENHA")
 DOWNLOAD_PATH = r"C:\Users\edeconsil\Downloads"  
 BASES = [
     #("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
-    ("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
-    ("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
-    #("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
+    #("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
+    #("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
+    ("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
     ]
 TIMEOUT = 120  
 
@@ -222,7 +222,8 @@ def login(download_path, nome_base, nome_caminho):
         if "FORA_DO_HORARIO_GERA" in nome_base:
             hoje = datetime.today()
             hoje_formatado = hoje.strftime("%d/%m/%Y")
-            ontem = hoje - timedelta(days=1)
+            #ontem = hoje - timedelta(days=1)
+            ontem = hoje - timedelta(days=2) #apagar
             data_ontem_formatada = ontem.strftime('%d/%m/%Y')
 
             hora_ontem = "20:00"
@@ -275,17 +276,25 @@ def login(download_path, nome_base, nome_caminho):
 
         else: 
             hoje = datetime.today()
-            ontem = hoje - timedelta(days=1)
-            data_ontem_formatada = ontem.strftime('%d/%m/%Y')
+            #ontem = hoje - timedelta(days=1)
+
+            inicio = hoje - timedelta(days=2) #apagar
+            fim = hoje - timedelta(days=1)
+
+            data_inicio_formatada = inicio.strftime('%d/%m/%Y')
+            data_fim_formatada = fim.strftime('%d/%m/%Y')
+
+            inicio = data_inicio_formatada
+            final = data_fim_formatada
             time.sleep(2)
 
             print("Encontra os campos de data") 
             inputs_date = driver.find_elements(By.CSS_SELECTOR, 'input[type="date"]')
             inputs_date[0].clear()
-            inputs_date[0].send_keys(data_ontem_formatada)
+            inputs_date[0].send_keys(inicio)
             inputs_date[1].clear()
-            inputs_date[1].send_keys(data_ontem_formatada)
-            print(f"Datas preenchidas: {data_ontem_formatada}")
+            inputs_date[1].send_keys(final)
+            print(f"Datas preenchidas: {inicio} a {final}")
 
             select_element = driver.find_element(By.XPATH, '//select[@class="form-control"]')
             select = Select(select_element)
