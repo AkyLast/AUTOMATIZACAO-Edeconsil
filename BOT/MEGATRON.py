@@ -79,17 +79,6 @@ def formatar_Ociosidade(arquivo):
     df = df.drop(df.index[-1])
     
     def format_df(row):
-        def format_placa(placa):
-            placa = placa.replace("-", "")
-            try:
-                param = placa.split(" ")
-                for indice in param:
-                    if len(indice) == 7:
-                        placa = indice
-            except:
-                placa = placa
-            return placa.upper()
-
         def format_time(duracao):
             hh, mm, ss = duracao.split(':')
             segundos = ((int(hh) * 60 + int(mm)) * 60) + int(ss)
@@ -97,17 +86,12 @@ def formatar_Ociosidade(arquivo):
 
 
         row["Veículo"] = row["Veículo"].replace(" ", "").replace("-", "")
-        
-        row["Data Inicial"] = pd.to_datetime(row["Data Inicial"], dayfirst=True)
-        row["Data Inicial"] = row["Data Inicial"].strftime("%d/%m/%Y %H:%M:%S")
-        row["Data Final"] = pd.to_datetime(row["Data Final"], dayfirst=True)
-        row["Data Final"] = row["Data Final"].strftime("%d/%m/%Y %H:%M:%S")
+        #row["Data Final"] = pd.to_datetime(row["Data Final"], dayfirst=True)
+        #row["Data Final"] = row["Data Final"].strftime("%d/%m/%Y %H:%M:%S")
         row["Duração Minutos"] = format_time(row["Duração"])
         row["Duração"] = pd.to_datetime(row["Duração"])
 
         row["Duração"] = row["Duração"].strftime("%H:%M:%S") 
-        
-        row["Placa"] = format_placa(row["Placa"])
         return row
 
     df = df.apply(format_df, axis = 1)
@@ -115,15 +99,14 @@ def formatar_Ociosidade(arquivo):
     df = df.rename(columns = {
         "Veículo": "TAG",
         "Endereço": "Localização",
-        "Placa": "PLACA",
         "Duração": "Tempo Ocioso",
-        "Data Inicial": "DATA INICIAL",
         "Data Final": "DATA FINAL",
     })
     
-    df = df[["DATA INICIAL", "DATA FINAL", "TAG", "Localização", "PLACA", "Tempo Ocioso", "Duração Minutos"]]
+    df = df[["DATA FINAL", "TAG", "Localização", "Tempo Ocioso", "Duração Minutos"]]
     
-    nome_teste = "Ociosidade"
+    volts = "12v" if "12v" in arquivo else "24v"
+    nome_teste = f"Ociosidade {volts}"
     diretorio_arquivo = os.path.dirname(arquivo)
     
     # Define o caminho completo para o arquivo Excel (mesmo diretório)
@@ -194,9 +177,9 @@ PASSWORD = os.getenv("SENHA")
 DOWNLOAD_PATH = r"C:\Users\edeconsil\Downloads"  
 BASES = [
     #("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
-    #("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
-    #("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
-    ("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
+    ("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
+    ("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
+    #("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
     ]
 TIMEOUT = 120  
 
@@ -223,7 +206,7 @@ def login(download_path, nome_base, nome_caminho):
             hoje = datetime.today()
             hoje_formatado = hoje.strftime("%d/%m/%Y")
             #ontem = hoje - timedelta(days=1)
-            ontem = hoje - timedelta(days=2) #apagar
+            ontem = hoje - timedelta(days=1) #apagar
             data_ontem_formatada = ontem.strftime('%d/%m/%Y')
 
             hora_ontem = "20:00"
@@ -278,7 +261,7 @@ def login(download_path, nome_base, nome_caminho):
             hoje = datetime.today()
             #ontem = hoje - timedelta(days=1)
 
-            inicio = hoje - timedelta(days=2) #apagar
+            inicio = hoje - timedelta(days=1) #apagar
             fim = hoje - timedelta(days=1)
 
             data_inicio_formatada = inicio.strftime('%d/%m/%Y')

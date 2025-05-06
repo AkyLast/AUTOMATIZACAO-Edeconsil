@@ -46,6 +46,25 @@ def execute_query(query: str, params: tuple = None):
         conn.close()
     return True
 
+def execute_many(query: str, params: list):
+    conn = get_connection() 
+    cursor = conn.cursor()
+    try:
+        cursor.executemany(query, params)
+        conn.commit()
+        print(f"{len(params)} registros inseridos com sucesso.")
+    except Error as e:
+        if e.errno == errorcode.ER_DUP_ENTRY:
+            print(f"[AVISO] Registro já existente: {e.msg}")
+            return False
+        conn.rollback()
+        print(f"[ERRO] Falha na query: {e.msg}")
+        raise
+    finally:
+        cursor.close()
+        conn.close()
+    return True
+
 def fetch_all(query: str, params: tuple = None):
     conn = get_connection()
     cursor = conn.cursor(dictionary = True)
