@@ -1,48 +1,59 @@
+import logging
 import pandas as pd
 from connection import *
 
-#param = atualizar_motoristas("CArlso", "CE10")
-#print(param)
+logging.basicConfig(
+    level = logging.INFO,
+    format = "%(asctime)s - %(levelname)s - %(message)s",
+    handlers = [
+        logging.FileHandler("app_logs.log")
+    ]
+)
 
-#lista_motoristas()
+logger = logging.getLogger()
 
-df = pd.read_excel(r"C:\Users\edeconsil\Downloads\veiculos_e_equipamento - bagunçar.xlsx")
-df_new = pd.read_excel(r"C:\Users\edeconsil\Downloads\veiculos_e_equipamento - atualizar.xlsx")
-df.rename(columns={col: col.strip().upper() for col in df.columns}, inplace=True)
-df_new.rename(columns={col: col.strip().upper() for col in df_new.columns}, inplace=True)
+#df = pd.read_excel(r"C:\Users\edeconsil\Downloads\veiculos_e_equipamento - bagunçar.xlsx")
+#df_new = pd.read_excel(r"C:\Users\edeconsil\Downloads\veiculos_e_equipamento - atualizar.xlsx")
+#df_velocidade = pd.read_excel(r"C:\Users\edeconsil\Downloads\Relatorio_Formatado - RastreOnline.xlsx")
+df_motoristas = pd.read_excel(r"C:\Users\edeconsil\Downloads\LISTA DE MOTORISTAS POR CR - DB.xlsx", header = 3)
 
+#df.rename(columns={col: col.strip().upper() for col in df.columns}, inplace=True)
+#df_new.rename(columns={col: col.strip().upper() for col in df_new.columns}, inplace=True)
+df_motoristas.rename(columns={col: col.strip().upper() for col in df_motoristas.columns}, inplace=True)
+
+def formatar_base(df):
+    df = df[["MOTORISTA", "TAG"]]
+    df = df.dropna(axis = 0)
+    return df
+
+df = formatar_base(df_motoristas)
+print(len(df))
 
 def adicionar_motoristas(df):
-    sucess = 0
-    fails = []
-
     motoristas = df["MOTORISTA"].tolist()
     tags = df["TAG"].tolist()
 
-    motoristas_existentes = [procurar_XName(name)[0]["name"] for name in motoristas if procurar_XName(name)]
+    motoristas_existentes = {row["name"]: row["TAG"] for row in lista_motoristas()}
     novos_motoristas = []
 
     for motorista, tag in zip(motoristas, tags):
-        if motorista not in motoristas_existentes:
+        motorista = motorista.strip().upper()
+        if motorista not in motoristas_existentes.keys():
             novos_motoristas.append((motorista, tag))
+            motoristas_existentes[motorista] = tag
         else:
-            fails.append(f"Motorista: {motorista} já existe.")
+            logger.info(f"Motorista: {motorista} já existe.")
 
     try:
         if novos_motoristas:
-            inserir_motorista_EmMassa(novos_motoristas)
-            sucess = len(novos_motoristas)
+            for data in novos_motoristas:
+                inserir_motorista(data) # não aceita assim "data"
         else:
-            print("Nenhum motorista novo")
+            logger.info("Nenhum motorista novo")
     except Exception as e:
-        fails.append("Erro ao inserir motoristas: {str(e)}")
-
-    return sucess, fails
+        logger.error(f"Erro ao inserir motoristas: {str(e)}")
 
 def atualizar_tag_XMotoristas(df):
-    sucess = 0
-    fails = []
-
     motorista_XTAG = {row["name"]: row["TAG"] for row in lista_motoristas()}
     motoristas, tags = df["MOTORISTA"].tolist(), df["TAG"].tolist()
 
@@ -51,18 +62,16 @@ def atualizar_tag_XMotoristas(df):
             tag = str(tag.strip())
             if motorista_XTAG[motorista] != tag:
                 atualizar_motoristas(motorista, tag)
-                sucess += 1
             
             if motorista not in motorista_XTAG:
                 inserir_motorista(motorista, tag)
-                sucess += 1
+                motorista_XTAG[motorista] = tag
 
     except Exception as e:
-        fails.append("Erro ao atualizar motoristas: {str(e)}")
-    
-    return sucess, fails
+        logger.error(f"Erro ao atualizar motoristas: {str(e)}")
+        print(e)
 
-df_new["CR"] = "ALUMAR OPERAÇÃO REDUÇÃO"
+adicionar_motoristas(df)
 
 def adicionar_tags(df):
     tag, cr, marca, modelo, ano, placa, descricao = df["TAG"].tolist(), df["CR"].tolist(), df["MARCA"].tolist(), df["MODELO"].tolist(), df["ANO"].tolist(), df["PLACA"], df["DESCRIÇÃO"]
@@ -72,4 +81,27 @@ def adicionar_tags(df):
     except Exception as e:
         print(f"Erro ao inserir as tags: {e}")
 
-adicionar_tags(df_new)
+def atualizar_tags(df):
+    tags_XVeiculos = {row["tag"]: row["cr"] for row in lista_tags()}
+    tags = df["TAG"].tolist()
+    CRs = df["CR"].tolist()
+    
+    for tag, cr in zip(tags, CRs):
+        if tag not in tags_XVeiculos:
+            df = df[df["TAG"] == tag]
+            adicionar_tags(df)
+
+        elif tags_XVeiculos.get(tag) != cr:
+            update_dimTags(tag, cr, "cr")
+
+
+# FORMATAR 
+def formatando_relatorioVelocidade(df):
+    df['DATA'] = pd.to_datetime(df_velocidade['DATA'], dayfirst = True).dt.strftime("%Y-%m-%d")
+    df = df[df["STATUS"] == "ALTA"]
+    df = df.dropna(axis = 0)
+    data = df.values.tolist()
+    inserir_ralatorioVelocidade(data)
+
+
+#formatando_relatorioVelocidade(df_velocidade)

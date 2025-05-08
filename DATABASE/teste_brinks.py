@@ -1,16 +1,18 @@
 from connection import *
 import pandas as pd
+from datetime import datetime
 
-#motorista_XTAG = {row["name"]: row["TAG"] for row in lista_motoristas()}
-#print(motorista_XTAG)
 
-df_new = pd.read_excel(r"C:\Users\edeconsil\Downloads\veiculos_e_equipamento - atualizar.xlsx")
+df_motoristas = pd.read_excel(r"C:\Users\edeconsil\Downloads\LISTA DE MOTORISTAS POR CR - DB.xlsx", header = 3)
+df_motoristas.rename(columns={col: col.strip().upper() for col in df_motoristas.columns}, inplace=True)
 
-df_new.rename(columns={col: col.strip().upper() for col in df_new.columns}, inplace=True)
+def formatar_base(df):
+    df = df[["MOTORISTA", "TAG"]]
+    df = df.dropna(axis = 0)
+    return df
 
-#print(df_new)
+df = formatar_base(df_motoristas)
 
-rows = lista_tags()
+data = df.iloc[3].tolist()
 
-for row in rows:
-    row
+atualizar_motoristas(data[0], data[1])

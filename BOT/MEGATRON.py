@@ -76,22 +76,27 @@ def formatar_RastreOnline(arquivo):
 
 def formatar_Ociosidade(arquivo):
     df = pd.read_csv(arquivo, encoding="ISO-8859-1", header = 5, sep = ";")
-    df = df.drop(df.index[-1])
+    if "Dados Adicionais" in df.columns:
+        df = df.drop(["Dados Adicionais"], axis = 1)
+    df = df.dropna(axis = 0)
     
     def format_df(row):
         def format_time(duracao):
-            hh, mm, ss = duracao.split(':')
-            segundos = ((int(hh) * 60 + int(mm)) * 60) + int(ss)
-            return int(segundos // 60)
+            try:
+                hh, mm, ss = duracao.split(':')
+                segundos = ((int(hh) * 60 + int(mm)) * 60) + int(ss)
+                return int(segundos // 60)
+            except:
+                return duracao
 
 
         row["Veículo"] = row["Veículo"].replace(" ", "").replace("-", "")
         #row["Data Final"] = pd.to_datetime(row["Data Final"], dayfirst=True)
         #row["Data Final"] = row["Data Final"].strftime("%d/%m/%Y %H:%M:%S")
         row["Duração Minutos"] = format_time(row["Duração"])
-        row["Duração"] = pd.to_datetime(row["Duração"])
+        #row["Duração"] = pd.to_datetime(row["Duração"])
 
-        row["Duração"] = row["Duração"].strftime("%H:%M:%S") 
+        #row["Duração"] = row["Duração"].strftime("%H:%M:%S") 
         return row
 
     df = df.apply(format_df, axis = 1)
@@ -176,10 +181,10 @@ PASSWORD = os.getenv("SENHA")
 
 DOWNLOAD_PATH = r"C:\Users\edeconsil\Downloads"  
 BASES = [
-    #("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
-    ("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
-    ("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
-    #("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
+    ("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
+    #("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
+    #("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
+    ("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
     ]
 TIMEOUT = 120  
 

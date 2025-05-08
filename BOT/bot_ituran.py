@@ -1,6 +1,50 @@
+import os
+import time
+import pandas as pd
 
-"""
-def login(download_path, nome_base, nome_caminho):
+from dotenv import load_dotenv
+from selenium import webdriver
+from datetime import datetime, timedelta
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.chrome import ChromeDriverManager  
+from selenium.webdriver.support import expected_conditions as EC
+
+
+
+load_dotenv()
+
+USERNAME = os.getenv("USERNAME_ITURAN")
+PASSWORD = os.getenv("PASWORD_ITURAN")
+
+DOWNLOAD_PATH = r"C:\Users\edeconsil\Downloads"  
+BASES = [
+    ("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
+    #("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
+    #("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
+    ("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
+    ]
+TIMEOUT = 120  
+
+options = webdriver.ChromeOptions()
+#options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+
+def iniciar_navegador():
+    # Inicializa o navegador com o caminho correto para o chromedriver
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+
+    # Acessa o site de login
+    print("indo por login")
+    driver.get("https://iweb.ituran.com.br/iweb2/login.aspx")
+    time.sleep(2)
+    return driver
+
+
+def login():
     def baixar_arquivo(download_path, nome_base, nome_caminho):
         if "FORA_DO_HORARIO_GERA" in nome_base:
             hoje = datetime.today()
@@ -119,41 +163,44 @@ def login(download_path, nome_base, nome_caminho):
 
     print("Fazendo Login")
     WebDriverWait(driver, TIMEOUT).until(
-        EC.presence_of_element_located((By.ID, "user_username"))
+        EC.presence_of_element_located((By.ID, "txt_username"))
     )
-    driver.find_element(By.ID, "user_username").send_keys(usuario)
-    driver.find_element(By.ID, "password").send_keys(senha)
+    driver.find_element(By.ID, "txt_username").send_keys(usuario)
+    driver.find_element(By.ID, "txt_password").send_keys(senha)
     driver.find_element(By.XPATH, '//input[@type="submit"]').click()
     print("Login Feito")
     time.sleep(5)
 
     print("Indo por Relatórios")
-    driver.get("https://rastreioonline.seeflex.com.br/relatorios")
-    time.sleep(5)
-    print("Selecionando a opção 100...")
-    select_element = driver.find_element(By.NAME, "DataTables_Table_0_length")
-    select = Select(select_element)
-    select.select_by_value("100")
-    print("opção 100... Selecionada")
+
+    WebDriverWait(driver, TIMEOUT).until(
+        EC.presence_of_element_located((By.ID, "Main_ReportsandPlaybackImg"))
+    )
+    driver.get("https://iweb.ituran.com.br/iweb2/PeleReports/Pelereports.aspx")
+    
     time.sleep(2)
 
-    print("Clicando no botão de relatório...")
-    botao_relatorio = driver.find_element(By.XPATH, f'//a[contains(@href, "{nome_caminho}")]')
-    print(f"\n{botao_relatorio}\n")
-    botao_relatorio.click()
-    print("Botão clicado")
-    time.sleep(5)
+    driver.find_element(By.ID, "span_Yesterday").click()
+    time.sleep(2)
+    
+    driver.find_element(By.XPATH, "//a[@href='#tab-3']").click()
+    time.sleep(2)
 
-    baixar_arquivo(download_path, nome_base, nome_caminho)
+    WebDriverWait(driver, TIMEOUT).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "fancytree-checkbox"))
+    )
+    driver.find_element(By.CLASS_NAME, "fancytree-checkbox").click()
+    time.sleep(2)                     
 
+    driver.find_element(By.XPATH, "//a[@href='#tab-5']").click()
+    time.sleep(2)
+    
+    WebDriverWait(driver, TIMEOUT).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "fancytree-checkbox"))
+    )
+
+    driver.find_element(By.CLASS_NAME, "fancytree-checkbox").click()
+    time.sleep(10)  
     driver.quit()
 
-
-for nome_base, nome_caminho in BASES:
-    print(f"\n{nome_caminho}\n")
-    try:
-        download_path = DOWNLOAD_PATH
-        login(download_path, nome_base, nome_caminho)
-    except:
-        print(f"Erro ao baixar o arquivo - {nome_base}")
-"""
+login()
