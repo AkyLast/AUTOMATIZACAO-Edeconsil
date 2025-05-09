@@ -177,8 +177,19 @@ def login():
         EC.presence_of_element_located((By.ID, "Main_ReportsandPlaybackImg"))
     )
     driver.get("https://iweb.ituran.com.br/iweb2/PeleReports/Pelereports.aspx")
-    
     time.sleep(2)
+
+    select_element = driver.find_element(By.NAME, "SelectReportType")
+    select = Select(select_element)
+    select.select_by_value("4")
+
+    WebDriverWait(driver, TIMEOUT).until(
+        EC.presence_of_element_located((By.NAME, "SelectReportParameter"))
+    )
+
+    select_element = driver.find_element(By.NAME, "SelectReportParameter")
+    select = Select(select_element)
+    select.select_by_value("85")
 
     driver.find_element(By.ID, "span_Yesterday").click()
     time.sleep(2)
@@ -188,19 +199,40 @@ def login():
 
     WebDriverWait(driver, TIMEOUT).until(
         EC.presence_of_element_located((By.CLASS_NAME, "fancytree-checkbox"))
-    )
-    driver.find_element(By.CLASS_NAME, "fancytree-checkbox").click()
+    ).click()
     time.sleep(2)                     
 
-    driver.find_element(By.XPATH, "//a[@href='#tab-5']").click()
-    time.sleep(2)
-    
-    WebDriverWait(driver, TIMEOUT).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "fancytree-checkbox"))
-    )
+    driver.find_element(By.XPATH, "//a[@href='#tab-9']").click()
 
-    driver.find_element(By.CLASS_NAME, "fancytree-checkbox").click()
-    time.sleep(10)  
-    driver.quit()
+    """
+    element = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "(//span[@class='dynatree-expander'])[1]"))
+    )
+    
+    # Clica no segundo elemento
+    element.click()
+    
+
+    WebDriverWait(driver, TIMEOUT).until(
+        EC.element_to_be_clickable((By.XPATH, "//a[@title='Latitude / Longitude']/preceding-sibling::span[@class='dynatree-checkbox']"))
+    ).click()
+    """
+    driver.find_element(By.ID, "reportButton").click()
+
+    element = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//button[text()='Ok' and not(contains(@class, 'hidden'))]"))
+    )
+    element.click()
+    time.sleep(30)
+
+    print("Clicando em exportar")
+    WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable((By.XPATH, "//span[@id='exportButton' and text()='Export']"))
+    ).click
+    print("btn clicador")
+
+
+    
+    time.sleep(TIMEOUT)  
 
 login()
