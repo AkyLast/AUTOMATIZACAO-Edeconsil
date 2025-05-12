@@ -110,10 +110,10 @@ time.sleep(5)
 # Calcula as datas
 hoje = datetime.today()
 hoje_formatado = hoje.strftime("%d/%m/%Y")
-ontem = hoje - timedelta(days=1)
+ontem = hoje - timedelta(days=3)
 data_ontem_formatada = ontem.strftime('%d/%m/%Y')
 
-hora_ontem = "20:00"
+hora_ontem = "20:30"
 hora_hoje = "05:30"
 
 # Espera a página carregar e garante que os campos de data estão visíveis

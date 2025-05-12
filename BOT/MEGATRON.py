@@ -189,7 +189,7 @@ BASES = [
 TIMEOUT = 120  
 
 options = webdriver.ChromeOptions()
-options.add_argument('--headless')
+#options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
@@ -211,10 +211,10 @@ def login(download_path, nome_base, nome_caminho):
             hoje = datetime.today()
             hoje_formatado = hoje.strftime("%d/%m/%Y")
             #ontem = hoje - timedelta(days=1)
-            ontem = hoje - timedelta(days=1) #apagar
+            ontem = hoje - timedelta(days=3) #apagar
             data_ontem_formatada = ontem.strftime('%d/%m/%Y')
 
-            hora_ontem = "20:00"
+            hora_ontem = "20:30"
             hora_hoje = "05:30"
 
             WebDriverWait(driver, 10).until(
@@ -266,7 +266,7 @@ def login(download_path, nome_base, nome_caminho):
             hoje = datetime.today()
             #ontem = hoje - timedelta(days=1)
 
-            inicio = hoje - timedelta(days=1) #apagar
+            inicio = hoje - timedelta(days=3) #apagar
             fim = hoje - timedelta(days=1)
 
             data_inicio_formatada = inicio.strftime('%d/%m/%Y')
