@@ -231,7 +231,7 @@ class Megatron(Motor):
         )
         logger.info(f"Buscando relatório: {self.name}")
         botao_relatorio = driver.find_element(By.XPATH, f'//a[contains(@href, "{self.path}")]')
-        print(f"\n{botao_relatorio}\n")
+        
         botao_relatorio.click()
         logger.info("Relatório encontrado e indo para o caminho!")
         logger.info("Logado com sucesso!!!!")
@@ -336,13 +336,13 @@ class Megatron(Motor):
         #driver.quit()
 
 BASES = [
-    ("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
-    ("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
-    ("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
+    #("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
+    #("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
+    #("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
     ("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
     ]
 
 for name, path in BASES:
-    bot = Megatron(name, path)
+    bot = Megatron(name, path, days = 4)
     bot.run()
 
