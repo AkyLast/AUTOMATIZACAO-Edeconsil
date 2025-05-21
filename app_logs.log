@@ -1,0 +1,630 @@
+2025-05-20 08:46:33,301 - INFO - ====== WebDriver manager ======
+2025-05-20 08:46:34,307 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:46:36,042 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:46:37,477 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 08:46:50,124 - INFO - Tentando fazer login.
+2025-05-20 08:46:50,300 - INFO - Login feito com SUCESSO!!
+2025-05-20 08:46:50,301 - INFO - Indo para os Relatórios
+2025-05-20 08:46:56,020 - INFO - Selecionando a opção 100...
+2025-05-20 08:46:56,095 - INFO - opção 100... Selecionada
+2025-05-20 08:46:58,106 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-20 08:47:00,729 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 08:47:00,729 - INFO - Logado com sucesso!!!!
+2025-05-20 08:47:00,761 - INFO - Preenchendo campos de datas e horas
+2025-05-20 08:47:00,889 - INFO - Datas preenchidas: 19/05/2025 a 19/05/2025
+2025-05-20 08:47:00,889 - INFO - Procurando Excel/CSV
+2025-05-20 08:47:01,965 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 08:47:02,026 - INFO - Bottton of search on clicked
+2025-05-20 08:48:02,992 - INFO - ====== WebDriver manager ======
+2025-05-20 08:48:03,911 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:48:04,931 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:48:06,467 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 08:48:14,709 - INFO - Tentando fazer login.
+2025-05-20 08:48:14,879 - INFO - Login feito com SUCESSO!!
+2025-05-20 08:48:14,879 - INFO - Indo para os Relatórios
+2025-05-20 08:48:23,011 - INFO - Selecionando a opção 100...
+2025-05-20 08:48:23,109 - INFO - opção 100... Selecionada
+2025-05-20 08:48:25,123 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-20 08:48:27,061 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 08:48:27,061 - INFO - Logado com sucesso!!!!
+2025-05-20 08:48:27,095 - INFO - Preenchendo campos de datas e horas
+2025-05-20 08:48:27,223 - INFO - Datas preenchidas: 19/05/2025 a 19/05/2025
+2025-05-20 08:48:27,223 - INFO - Procurando Excel/CSV
+2025-05-20 08:48:28,307 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 08:48:28,358 - INFO - Bottton of search on clicked
+2025-05-20 08:48:55,920 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 08:50:40,914 - INFO - ====== WebDriver manager ======
+2025-05-20 08:50:41,808 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:50:42,256 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:50:44,375 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 08:51:01,602 - INFO - Tentando fazer login.
+2025-05-20 08:51:01,793 - INFO - Login feito com SUCESSO!!
+2025-05-20 08:51:01,793 - INFO - Indo para os Relatórios
+2025-05-20 08:51:17,255 - INFO - Selecionando a opção 100...
+2025-05-20 08:51:17,330 - INFO - opção 100... Selecionada
+2025-05-20 08:51:19,343 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-20 08:51:20,805 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 08:51:20,805 - INFO - Logado com sucesso!!!!
+2025-05-20 08:51:20,837 - INFO - Preenchendo campos de datas e horas
+2025-05-20 08:51:20,967 - INFO - Datas preenchidas: 19/05/2025 a 19/05/2025
+2025-05-20 08:51:20,967 - INFO - Procurando Excel/CSV
+2025-05-20 08:51:22,047 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 08:51:22,099 - INFO - Bottton of search on clicked
+2025-05-20 08:51:51,665 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 08:51:55,791 - INFO - ====== WebDriver manager ======
+2025-05-20 08:51:56,613 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:51:57,012 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:51:58,106 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 08:52:05,602 - INFO - Tentando fazer login.
+2025-05-20 08:52:16,685 - INFO - Login feito com SUCESSO!!
+2025-05-20 08:52:16,685 - INFO - Indo para os Relatórios
+2025-05-20 08:52:22,433 - INFO - Selecionando a opção 100...
+2025-05-20 08:52:22,516 - INFO - opção 100... Selecionada
+2025-05-20 08:52:24,528 - INFO - Buscando relatório: Tempo_Ocioso_veiculos_de_12v
+2025-05-20 08:52:25,226 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 08:52:25,226 - INFO - Logado com sucesso!!!!
+2025-05-20 08:52:25,259 - INFO - Preenchendo campos de datas e horas
+2025-05-20 08:52:25,387 - INFO - Datas preenchidas: 19/05/2025 a 19/05/2025
+2025-05-20 08:52:25,387 - INFO - Procurando Excel/CSV
+2025-05-20 08:52:26,461 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 08:52:26,523 - INFO - Bottton of search on clicked
+2025-05-20 08:52:35,455 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 08:52:39,561 - INFO - ====== WebDriver manager ======
+2025-05-20 08:52:40,377 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:52:40,773 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:52:41,167 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 08:52:50,407 - INFO - Tentando fazer login.
+2025-05-20 08:52:50,595 - INFO - Login feito com SUCESSO!!
+2025-05-20 08:52:50,595 - INFO - Indo para os Relatórios
+2025-05-20 08:53:04,709 - INFO - Selecionando a opção 100...
+2025-05-20 08:53:04,785 - INFO - opção 100... Selecionada
+2025-05-20 08:53:06,799 - INFO - Buscando relatório: Tempo_Ocioso_veiculos_de_24v
+2025-05-20 08:53:07,331 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 08:53:07,331 - INFO - Logado com sucesso!!!!
+2025-05-20 08:53:07,365 - INFO - Preenchendo campos de datas e horas
+2025-05-20 08:53:07,501 - INFO - Datas preenchidas: 19/05/2025 a 19/05/2025
+2025-05-20 08:53:07,501 - INFO - Procurando Excel/CSV
+2025-05-20 08:53:08,575 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 08:53:08,629 - INFO - Bottton of search on clicked
+2025-05-20 08:53:14,985 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 08:53:14,987 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 08:53:14,987 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 08:53:14,987 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 08:53:14,988 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 08:53:19,107 - INFO - ====== WebDriver manager ======
+2025-05-20 08:53:20,051 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:53:20,163 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 08:53:20,259 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 08:53:29,783 - INFO - Tentando fazer login.
+2025-05-20 08:53:33,573 - INFO - Login feito com SUCESSO!!
+2025-05-20 08:53:33,573 - INFO - Indo para os Relatórios
+2025-05-20 08:53:39,945 - INFO - Selecionando a opção 100...
+2025-05-20 08:53:40,069 - INFO - opção 100... Selecionada
+2025-05-20 08:53:42,079 - INFO - Buscando relatório: FORA_DO_HORARIO_GERAL
+2025-05-20 08:53:44,331 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 08:53:44,331 - INFO - Logado com sucesso!!!!
+2025-05-20 08:53:44,364 - INFO - Preenchendo campos de datas e horas
+2025-05-20 08:53:44,500 - INFO - Horas preenchidas: 20:30 a 05:30
+2025-05-20 08:53:44,605 - INFO - Datas preenchidas: 19/05/2025 a 20/05/2025
+2025-05-20 08:53:44,605 - INFO - Procurando Excel/CSV
+2025-05-20 08:53:44,664 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 08:53:44,714 - INFO - Bottton of search on clicked
+2025-05-20 09:07:03,073 - INFO - ====== WebDriver manager ======
+2025-05-20 09:07:04,045 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:07:04,271 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:07:11,184 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 09:07:27,428 - INFO - Tentando fazer login.
+2025-05-20 09:07:27,611 - INFO - Login feito com SUCESSO!!
+2025-05-20 09:07:27,611 - INFO - Indo para os Relatórios
+2025-05-20 09:07:39,868 - INFO - Selecionando a opção 100...
+2025-05-20 09:07:39,944 - INFO - opção 100... Selecionada
+2025-05-20 09:07:41,957 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-20 09:07:44,659 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 09:07:44,659 - INFO - Logado com sucesso!!!!
+2025-05-20 09:07:44,697 - INFO - Preenchendo campos de datas e horas
+2025-05-20 09:07:44,837 - INFO - Datas preenchidas: 19/05/2025 a 19/05/2025
+2025-05-20 09:07:44,838 - INFO - Procurando Excel/CSV
+2025-05-20 09:07:45,931 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 09:07:45,986 - INFO - Bottton of search on clicked
+2025-05-20 09:08:11,574 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:08:11,584 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:08:15,697 - INFO - ====== WebDriver manager ======
+2025-05-20 09:08:16,510 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:08:16,791 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:08:19,144 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 09:08:33,296 - INFO - Tentando fazer login.
+2025-05-20 09:08:33,518 - INFO - Login feito com SUCESSO!!
+2025-05-20 09:08:33,518 - INFO - Indo para os Relatórios
+2025-05-20 09:08:40,046 - INFO - Selecionando a opção 100...
+2025-05-20 09:08:40,132 - INFO - opção 100... Selecionada
+2025-05-20 09:08:42,146 - INFO - Buscando relatório: Tempo_Ocioso_veiculos_de_12v
+2025-05-20 09:08:42,659 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 09:08:42,659 - INFO - Logado com sucesso!!!!
+2025-05-20 09:08:42,703 - INFO - Preenchendo campos de datas e horas
+2025-05-20 09:08:42,859 - INFO - Datas preenchidas: 19/05/2025 a 19/05/2025
+2025-05-20 09:08:42,860 - INFO - Procurando Excel/CSV
+2025-05-20 09:08:43,946 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 09:08:44,021 - INFO - Bottton of search on clicked
+2025-05-20 09:08:52,381 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:08:56,526 - INFO - ====== WebDriver manager ======
+2025-05-20 09:08:57,338 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:08:57,509 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:08:59,185 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 09:09:08,779 - INFO - Tentando fazer login.
+2025-05-20 09:09:08,971 - INFO - Login feito com SUCESSO!!
+2025-05-20 09:09:08,971 - INFO - Indo para os Relatórios
+2025-05-20 09:09:15,892 - INFO - Selecionando a opção 100...
+2025-05-20 09:09:16,004 - INFO - opção 100... Selecionada
+2025-05-20 09:09:18,017 - INFO - Buscando relatório: Tempo_Ocioso_veiculos_de_24v
+2025-05-20 09:10:53,038 - INFO - ====== WebDriver manager ======
+2025-05-20 09:10:53,987 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:10:55,415 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:10:55,650 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 09:11:03,682 - INFO - Tentando fazer login.
+2025-05-20 09:11:03,851 - INFO - Login feito com SUCESSO!!
+2025-05-20 09:11:03,851 - INFO - Indo para os Relatórios
+2025-05-20 09:11:16,695 - INFO - Selecionando a opção 100...
+2025-05-20 09:11:16,770 - INFO - opção 100... Selecionada
+2025-05-20 09:11:18,783 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-20 09:11:19,254 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 09:11:19,254 - INFO - Logado com sucesso!!!!
+2025-05-20 09:11:19,290 - INFO - Preenchendo campos de datas e horas
+2025-05-20 09:11:19,414 - INFO - Datas preenchidas: 19/05/2025 a 19/05/2025
+2025-05-20 09:11:19,415 - INFO - Procurando Excel/CSV
+2025-05-20 09:11:20,498 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 09:11:20,555 - INFO - Bottton of search on clicked
+2025-05-20 09:11:47,095 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:11:47,106 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:11:51,182 - INFO - ====== WebDriver manager ======
+2025-05-20 09:11:52,018 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:11:52,152 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:11:53,792 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 09:12:02,937 - INFO - Tentando fazer login.
+2025-05-20 09:12:03,123 - INFO - Login feito com SUCESSO!!
+2025-05-20 09:12:03,123 - INFO - Indo para os Relatórios
+2025-05-20 09:12:10,338 - INFO - Selecionando a opção 100...
+2025-05-20 09:12:10,417 - INFO - opção 100... Selecionada
+2025-05-20 09:12:12,431 - INFO - Buscando relatório: Tempo_Ocioso_veiculos_de_12v
+2025-05-20 09:12:15,529 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 09:12:15,529 - INFO - Logado com sucesso!!!!
+2025-05-20 09:12:15,563 - INFO - Preenchendo campos de datas e horas
+2025-05-20 09:12:15,705 - INFO - Datas preenchidas: 19/05/2025 a 19/05/2025
+2025-05-20 09:12:15,705 - INFO - Procurando Excel/CSV
+2025-05-20 09:12:16,783 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 09:12:16,839 - INFO - Bottton of search on clicked
+2025-05-20 09:12:25,149 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:12:29,304 - INFO - ====== WebDriver manager ======
+2025-05-20 09:12:30,123 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:12:30,654 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:12:30,806 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 09:12:42,366 - INFO - Tentando fazer login.
+2025-05-20 09:12:42,544 - INFO - Login feito com SUCESSO!!
+2025-05-20 09:12:42,545 - INFO - Indo para os Relatórios
+2025-05-20 09:12:49,244 - INFO - Selecionando a opção 100...
+2025-05-20 09:12:49,327 - INFO - opção 100... Selecionada
+2025-05-20 09:12:51,340 - INFO - Buscando relatório: Tempo_Ocioso_veiculos_de_24v
+2025-05-20 09:12:52,103 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 09:12:52,103 - INFO - Logado com sucesso!!!!
+2025-05-20 09:12:52,137 - INFO - Preenchendo campos de datas e horas
+2025-05-20 09:12:52,279 - INFO - Datas preenchidas: 19/05/2025 a 19/05/2025
+2025-05-20 09:12:52,279 - INFO - Procurando Excel/CSV
+2025-05-20 09:12:53,357 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 09:12:53,413 - INFO - Bottton of search on clicked
+2025-05-20 09:13:03,751 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,752 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,753 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,753 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,753 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,798 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,799 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,799 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,799 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,800 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,800 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,800 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:03,800 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-20 09:13:07,944 - INFO - ====== WebDriver manager ======
+2025-05-20 09:13:08,762 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:13:10,281 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-20 09:13:11,815 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 09:13:26,721 - INFO - Tentando fazer login.
+2025-05-20 09:13:29,601 - INFO - Login feito com SUCESSO!!
+2025-05-20 09:13:29,602 - INFO - Indo para os Relatórios
+2025-05-20 09:13:35,501 - INFO - Selecionando a opção 100...
+2025-05-20 09:13:35,576 - INFO - opção 100... Selecionada
+2025-05-20 09:13:37,589 - INFO - Buscando relatório: FORA_DO_HORARIO_GERAL
+2025-05-20 09:13:38,265 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-20 09:13:38,265 - INFO - Logado com sucesso!!!!
+2025-05-20 09:13:38,300 - INFO - Preenchendo campos de datas e horas
+2025-05-20 09:13:38,437 - INFO - Horas preenchidas: 20:30 a 05:30
+2025-05-20 09:13:38,562 - INFO - Datas preenchidas: 19/05/2025 a 20/05/2025
+2025-05-20 09:13:38,562 - INFO - Procurando Excel/CSV
+2025-05-20 09:13:38,627 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-20 09:13:38,683 - INFO - Bottton of search on clicked
+2025-05-21 07:16:36,335 - INFO - ====== WebDriver manager ======
+2025-05-21 07:16:37,498 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 07:16:40,741 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 07:16:44,769 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 07:16:48,157 - INFO - WebDriver version 136.0.7103.94 selected
+2025-05-21 07:16:48,161 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.94/win32/chromedriver-win32.zip
+2025-05-21 07:16:48,161 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.94/win32/chromedriver-win32.zip
+2025-05-21 07:16:48,405 - INFO - Driver downloading response is 200
+2025-05-21 07:16:50,016 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 07:16:50,452 - INFO - Driver has been saved in cache [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94]
+2025-05-21 07:17:00,917 - INFO - Tentando fazer login.
+2025-05-21 07:17:01,221 - INFO - Login feito com SUCESSO!!
+2025-05-21 07:17:01,222 - INFO - Indo para os Relatórios
+2025-05-21 07:17:13,846 - INFO - Selecionando a opção 100...
+2025-05-21 07:17:13,963 - INFO - opção 100... Selecionada
+2025-05-21 07:17:15,978 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 07:17:17,796 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 07:17:17,797 - INFO - Logado com sucesso!!!!
+2025-05-21 07:17:17,936 - INFO - Preenchendo campos de datas e horas
+2025-05-21 07:17:18,165 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 07:17:18,166 - INFO - Procurando Excel/CSV
+2025-05-21 07:17:19,282 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 07:17:19,364 - INFO - Bottton of search on clicked
+2025-05-21 07:18:06,569 - INFO - ====== WebDriver manager ======
+2025-05-21 07:18:08,186 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 07:18:10,832 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 07:18:12,361 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 07:18:21,349 - INFO - Tentando fazer login.
+2025-05-21 07:18:28,847 - INFO - Login feito com SUCESSO!!
+2025-05-21 07:18:28,847 - INFO - Indo para os Relatórios
+2025-05-21 07:18:34,685 - INFO - Selecionando a opção 100...
+2025-05-21 07:18:34,799 - INFO - opção 100... Selecionada
+2025-05-21 07:18:36,814 - INFO - Buscando relatório: Tempo_Ocioso_veiculos_de_12v
+2025-05-21 07:18:37,308 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 07:18:37,308 - INFO - Logado com sucesso!!!!
+2025-05-21 07:18:37,363 - INFO - Preenchendo campos de datas e horas
+2025-05-21 07:18:37,585 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 07:18:37,585 - INFO - Procurando Excel/CSV
+2025-05-21 07:18:38,696 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 07:18:38,784 - INFO - Bottton of search on clicked
+2025-05-21 07:18:47,180 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:18:47,183 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:18:47,183 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:18:47,183 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:18:51,299 - INFO - ====== WebDriver manager ======
+2025-05-21 07:18:52,487 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 07:18:52,952 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 07:18:53,208 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 07:19:13,757 - INFO - Tentando fazer login.
+2025-05-21 07:19:19,685 - INFO - Login feito com SUCESSO!!
+2025-05-21 07:19:19,685 - INFO - Indo para os Relatórios
+2025-05-21 07:19:25,175 - INFO - Selecionando a opção 100...
+2025-05-21 07:19:25,299 - INFO - opção 100... Selecionada
+2025-05-21 07:19:27,315 - INFO - Buscando relatório: Tempo_Ocioso_veiculos_de_24v
+2025-05-21 07:19:28,077 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 07:19:28,077 - INFO - Logado com sucesso!!!!
+2025-05-21 07:19:28,144 - INFO - Preenchendo campos de datas e horas
+2025-05-21 07:19:28,367 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 07:19:28,368 - INFO - Procurando Excel/CSV
+2025-05-21 07:19:29,480 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 07:19:29,574 - INFO - Bottton of search on clicked
+2025-05-21 07:19:50,844 - ERROR - Erro ao formatar a duração em minutos: 'float' object has no attribute 'strip'
+2025-05-21 07:19:50,972 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:19:50,973 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:19:50,973 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:19:50,993 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:19:50,993 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:19:51,040 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:19:51,040 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:19:51,042 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:19:55,155 - INFO - ====== WebDriver manager ======
+2025-05-21 07:19:56,321 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 07:19:59,923 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 07:20:03,403 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 07:20:15,154 - INFO - Tentando fazer login.
+2025-05-21 07:20:15,446 - INFO - Login feito com SUCESSO!!
+2025-05-21 07:20:15,446 - INFO - Indo para os Relatórios
+2025-05-21 07:20:22,375 - INFO - Selecionando a opção 100...
+2025-05-21 07:20:22,481 - INFO - opção 100... Selecionada
+2025-05-21 07:20:24,495 - INFO - Buscando relatório: FORA_DO_HORARIO_GERAL
+2025-05-21 07:20:25,094 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 07:20:25,095 - INFO - Logado com sucesso!!!!
+2025-05-21 07:20:25,140 - INFO - Preenchendo campos de datas e horas
+2025-05-21 07:20:25,324 - INFO - Horas preenchidas: 20:30 a 05:30
+2025-05-21 07:20:25,482 - INFO - Datas preenchidas: 20/05/2025 a 21/05/2025
+2025-05-21 07:20:25,482 - INFO - Procurando Excel/CSV
+2025-05-21 07:20:25,570 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 07:20:25,643 - INFO - Bottton of search on clicked
+2025-05-21 07:21:11,124 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 07:21:11,125 - ERROR - Erro ao buscar o motorista no DF: index 0 is out of bounds for axis 0 with size 0
+2025-05-21 07:21:11,125 - ERROR - Erro ao buscar o motorista no DF: index 0 is out of bounds for axis 0 with size 0
+2025-05-21 07:21:11,216 - ERROR - Erro ao buscar o CR no DF: index 0 is out of bounds for axis 0 with size 0
+2025-05-21 07:21:11,217 - ERROR - Erro ao buscar o CR no DF: index 0 is out of bounds for axis 0 with size 0
+2025-05-21 12:13:08,051 - INFO - ====== WebDriver manager ======
+2025-05-21 12:13:09,432 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:13:10,910 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:13:11,115 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:14:10,256 - INFO - Tentando fazer login.
+2025-05-21 12:14:10,432 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:14:10,432 - INFO - Indo para os Relatórios
+2025-05-21 12:14:15,924 - INFO - Selecionando a opção 100...
+2025-05-21 12:14:16,002 - INFO - opção 100... Selecionada
+2025-05-21 12:14:18,013 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:14:18,415 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:14:18,416 - INFO - Logado com sucesso!!!!
+2025-05-21 12:14:18,499 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:14:18,613 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:14:18,613 - INFO - Procurando Excel/CSV
+2025-05-21 12:14:19,680 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:14:19,726 - INFO - Bottton of search on clicked
+2025-05-21 12:15:40,505 - INFO - ====== WebDriver manager ======
+2025-05-21 12:15:41,301 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:15:41,961 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:15:42,192 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:15:50,258 - INFO - Tentando fazer login.
+2025-05-21 12:15:53,284 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:15:53,284 - INFO - Indo para os Relatórios
+2025-05-21 12:15:59,648 - INFO - Selecionando a opção 100...
+2025-05-21 12:15:59,726 - INFO - opção 100... Selecionada
+2025-05-21 12:16:01,737 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:16:02,239 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:16:02,239 - INFO - Logado com sucesso!!!!
+2025-05-21 12:16:02,267 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:16:02,375 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:16:02,375 - INFO - Procurando Excel/CSV
+2025-05-21 12:16:03,435 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:16:03,491 - INFO - Bottton of search on clicked
+2025-05-21 12:16:37,819 - INFO - ====== WebDriver manager ======
+2025-05-21 12:16:38,575 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:16:38,656 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:16:38,740 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:16:46,994 - INFO - Tentando fazer login.
+2025-05-21 12:16:47,132 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:16:47,132 - INFO - Indo para os Relatórios
+2025-05-21 12:16:52,661 - INFO - Selecionando a opção 100...
+2025-05-21 12:16:52,725 - INFO - opção 100... Selecionada
+2025-05-21 12:16:54,736 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:16:55,727 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:16:55,727 - INFO - Logado com sucesso!!!!
+2025-05-21 12:16:55,755 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:16:55,883 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:16:55,883 - INFO - Procurando Excel/CSV
+2025-05-21 12:16:56,940 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:16:56,980 - INFO - Bottton of search on clicked
+2025-05-21 12:18:24,737 - INFO - ====== WebDriver manager ======
+2025-05-21 12:18:25,567 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:18:25,780 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:18:25,848 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:18:35,400 - INFO - Tentando fazer login.
+2025-05-21 12:18:38,055 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:18:38,055 - INFO - Indo para os Relatórios
+2025-05-21 12:18:44,025 - INFO - Selecionando a opção 100...
+2025-05-21 12:18:44,087 - INFO - opção 100... Selecionada
+2025-05-21 12:18:46,098 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:18:46,532 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:18:46,532 - INFO - Logado com sucesso!!!!
+2025-05-21 12:18:46,567 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:18:46,670 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:18:46,670 - INFO - Procurando Excel/CSV
+2025-05-21 12:18:47,730 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:18:47,773 - INFO - Bottton of search on clicked
+2025-05-21 12:20:39,082 - INFO - ====== WebDriver manager ======
+2025-05-21 12:20:39,902 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:20:40,089 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:20:40,160 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:20:46,054 - INFO - Tentando fazer login.
+2025-05-21 12:20:46,196 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:20:46,196 - INFO - Indo para os Relatórios
+2025-05-21 12:20:52,295 - INFO - Selecionando a opção 100...
+2025-05-21 12:20:52,368 - INFO - opção 100... Selecionada
+2025-05-21 12:20:54,378 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:20:56,755 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:20:56,755 - INFO - Logado com sucesso!!!!
+2025-05-21 12:20:56,791 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:20:56,902 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:20:56,902 - INFO - Procurando Excel/CSV
+2025-05-21 12:20:57,975 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:20:58,020 - INFO - Bottton of search on clicked
+2025-05-21 12:23:07,664 - INFO - ====== WebDriver manager ======
+2025-05-21 12:23:08,474 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:23:08,671 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:23:08,760 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:23:15,051 - INFO - Tentando fazer login.
+2025-05-21 12:23:15,183 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:23:15,183 - INFO - Indo para os Relatórios
+2025-05-21 12:23:20,854 - INFO - Selecionando a opção 100...
+2025-05-21 12:23:20,925 - INFO - opção 100... Selecionada
+2025-05-21 12:23:22,934 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:23:23,460 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:23:23,460 - INFO - Logado com sucesso!!!!
+2025-05-21 12:23:23,499 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:23:23,606 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:23:23,606 - INFO - Procurando Excel/CSV
+2025-05-21 12:23:24,665 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:23:24,706 - INFO - Bottton of search on clicked
+2025-05-21 12:25:08,172 - INFO - ====== WebDriver manager ======
+2025-05-21 12:25:08,990 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:25:09,080 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:25:09,164 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:25:15,740 - INFO - Tentando fazer login.
+2025-05-21 12:25:17,763 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:25:17,763 - INFO - Indo para os Relatórios
+2025-05-21 12:25:23,424 - INFO - Selecionando a opção 100...
+2025-05-21 12:25:23,496 - INFO - opção 100... Selecionada
+2025-05-21 12:25:25,506 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:25:26,880 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:25:26,880 - INFO - Logado com sucesso!!!!
+2025-05-21 12:25:26,917 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:25:27,023 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:25:27,023 - INFO - Procurando Excel/CSV
+2025-05-21 12:25:28,082 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:25:28,126 - INFO - Bottton of search on clicked
+2025-05-21 12:28:41,270 - INFO - ====== WebDriver manager ======
+2025-05-21 12:28:42,081 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:28:42,302 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:28:42,637 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:28:51,474 - INFO - Tentando fazer login.
+2025-05-21 12:28:51,615 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:28:51,615 - INFO - Indo para os Relatórios
+2025-05-21 12:28:57,741 - INFO - Selecionando a opção 100...
+2025-05-21 12:28:57,813 - INFO - opção 100... Selecionada
+2025-05-21 12:28:59,824 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:29:00,703 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:29:00,703 - INFO - Logado com sucesso!!!!
+2025-05-21 12:29:00,747 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:29:00,857 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:29:00,857 - INFO - Procurando Excel/CSV
+2025-05-21 12:29:01,914 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:29:01,957 - INFO - Bottton of search on clicked
+2025-05-21 12:30:38,906 - INFO - ====== WebDriver manager ======
+2025-05-21 12:30:39,706 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:30:39,804 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:30:39,871 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:30:46,101 - INFO - Tentando fazer login.
+2025-05-21 12:30:46,253 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:30:46,254 - INFO - Indo para os Relatórios
+2025-05-21 12:30:51,945 - INFO - Selecionando a opção 100...
+2025-05-21 12:30:52,012 - INFO - opção 100... Selecionada
+2025-05-21 12:30:54,023 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:30:54,870 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:30:54,870 - INFO - Logado com sucesso!!!!
+2025-05-21 12:30:54,905 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:30:55,012 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:30:55,012 - INFO - Procurando Excel/CSV
+2025-05-21 12:30:56,070 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:30:56,114 - INFO - Bottton of search on clicked
+2025-05-21 12:44:09,421 - INFO - ====== WebDriver manager ======
+2025-05-21 12:44:10,434 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:44:10,508 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:44:10,575 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:44:16,337 - INFO - Tentando fazer login.
+2025-05-21 12:44:18,693 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:44:18,693 - INFO - Indo para os Relatórios
+2025-05-21 12:44:25,127 - INFO - Selecionando a opção 100...
+2025-05-21 12:44:25,186 - INFO - opção 100... Selecionada
+2025-05-21 12:44:27,199 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:44:28,106 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:44:28,107 - INFO - Logado com sucesso!!!!
+2025-05-21 12:44:28,163 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:44:28,270 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:44:28,270 - INFO - Procurando Excel/CSV
+2025-05-21 12:44:29,330 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:44:29,374 - INFO - Bottton of search on clicked
+2025-05-21 12:45:41,504 - INFO - ====== WebDriver manager ======
+2025-05-21 12:45:42,313 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:45:42,394 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:45:42,465 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:45:49,004 - INFO - Tentando fazer login.
+2025-05-21 12:45:49,159 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:45:49,159 - INFO - Indo para os Relatórios
+2025-05-21 12:45:55,248 - INFO - Selecionando a opção 100...
+2025-05-21 12:45:55,313 - INFO - opção 100... Selecionada
+2025-05-21 12:45:57,323 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:45:57,864 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:45:57,864 - INFO - Logado com sucesso!!!!
+2025-05-21 12:45:57,901 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:45:58,009 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:45:58,009 - INFO - Procurando Excel/CSV
+2025-05-21 12:45:59,069 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:45:59,114 - INFO - Bottton of search on clicked
+2025-05-21 12:46:51,859 - INFO - ====== WebDriver manager ======
+2025-05-21 12:46:52,648 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:46:52,721 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:46:52,782 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:46:59,749 - INFO - Tentando fazer login.
+2025-05-21 12:47:02,199 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:47:02,199 - INFO - Indo para os Relatórios
+2025-05-21 12:47:08,338 - INFO - Selecionando a opção 100...
+2025-05-21 12:47:08,403 - INFO - opção 100... Selecionada
+2025-05-21 12:47:10,414 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:47:10,837 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:47:10,837 - INFO - Logado com sucesso!!!!
+2025-05-21 12:47:10,876 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:47:10,985 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:47:10,985 - INFO - Procurando Excel/CSV
+2025-05-21 12:47:12,045 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:47:12,089 - INFO - Bottton of search on clicked
+2025-05-21 12:51:19,346 - INFO - ====== WebDriver manager ======
+2025-05-21 12:51:20,150 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:51:20,217 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:51:20,286 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:52:16,572 - INFO - ====== WebDriver manager ======
+2025-05-21 12:52:17,303 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:52:17,374 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:52:17,464 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:52:22,925 - INFO - Tentando fazer login.
+2025-05-21 12:52:23,079 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:52:23,079 - INFO - Indo para os Relatórios
+2025-05-21 12:52:28,792 - INFO - Selecionando a opção 100...
+2025-05-21 12:52:28,872 - INFO - opção 100... Selecionada
+2025-05-21 12:52:30,882 - INFO - Buscando relatório: Velocidade_(Relatorio_para_robo)
+2025-05-21 12:52:31,205 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:52:31,205 - INFO - Logado com sucesso!!!!
+2025-05-21 12:52:31,242 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:52:31,358 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:52:31,358 - INFO - Procurando Excel/CSV
+2025-05-21 12:52:32,425 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:52:32,481 - INFO - Bottton of search on clicked
+2025-05-21 12:52:39,080 - INFO - ====== WebDriver manager ======
+2025-05-21 12:52:39,738 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:52:39,819 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:52:39,933 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:52:46,735 - INFO - Tentando fazer login.
+2025-05-21 12:52:46,891 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:52:46,891 - INFO - Indo para os Relatórios
+2025-05-21 12:52:53,026 - INFO - Selecionando a opção 100...
+2025-05-21 12:52:53,092 - INFO - opção 100... Selecionada
+2025-05-21 12:52:55,102 - INFO - Buscando relatório: Tempo_Ocioso_veiculos_de_12v
+2025-05-21 12:52:55,551 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:52:55,551 - INFO - Logado com sucesso!!!!
+2025-05-21 12:52:55,582 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:52:55,691 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:52:55,691 - INFO - Procurando Excel/CSV
+2025-05-21 12:52:56,757 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:52:56,800 - INFO - Bottton of search on clicked
+2025-05-21 12:53:01,062 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:01,063 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:01,064 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:01,064 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:05,179 - INFO - ====== WebDriver manager ======
+2025-05-21 12:53:05,892 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:53:05,973 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:53:06,175 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:53:12,636 - INFO - Tentando fazer login.
+2025-05-21 12:53:14,659 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:53:14,659 - INFO - Indo para os Relatórios
+2025-05-21 12:53:20,427 - INFO - Selecionando a opção 100...
+2025-05-21 12:53:20,522 - INFO - opção 100... Selecionada
+2025-05-21 12:53:22,533 - INFO - Buscando relatório: Tempo_Ocioso_veiculos_de_24v
+2025-05-21 12:53:23,068 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:53:23,069 - INFO - Logado com sucesso!!!!
+2025-05-21 12:53:23,098 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:53:23,212 - INFO - Datas preenchidas: 20/05/2025 a 20/05/2025
+2025-05-21 12:53:23,212 - INFO - Procurando Excel/CSV
+2025-05-21 12:53:24,269 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:53:24,311 - INFO - Bottton of search on clicked
+2025-05-21 12:53:30,573 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:30,573 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:30,574 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:30,584 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:30,585 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:30,612 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:30,612 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:30,613 - ERROR - Erro ao buscar o CR no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:53:34,751 - INFO - ====== WebDriver manager ======
+2025-05-21 12:53:35,432 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:53:35,525 - INFO - Get LATEST chromedriver version for google-chrome
+2025-05-21 12:53:35,624 - INFO - Driver [C:\Users\edeconsil\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-21 12:53:51,698 - INFO - Tentando fazer login.
+2025-05-21 12:53:51,837 - INFO - Login feito com SUCESSO!!
+2025-05-21 12:53:51,837 - INFO - Indo para os Relatórios
+2025-05-21 12:53:57,497 - INFO - Selecionando a opção 100...
+2025-05-21 12:53:57,571 - INFO - opção 100... Selecionada
+2025-05-21 12:53:59,581 - INFO - Buscando relatório: FORA_DO_HORARIO_GERAL
+2025-05-21 12:53:59,958 - INFO - Relatório encontrado e indo para o caminho!
+2025-05-21 12:53:59,958 - INFO - Logado com sucesso!!!!
+2025-05-21 12:53:59,992 - INFO - Preenchendo campos de datas e horas
+2025-05-21 12:54:00,100 - INFO - Horas preenchidas: 20:30 a 05:30
+2025-05-21 12:54:00,193 - INFO - Datas preenchidas: 20/05/2025 a 21/05/2025
+2025-05-21 12:54:00,193 - INFO - Procurando Excel/CSV
+2025-05-21 12:54:00,242 - INFO - Opção 'Excel/CSV' selecionada com sucesso.
+2025-05-21 12:54:00,284 - INFO - Bottton of search on clicked
+2025-05-21 12:54:02,582 - ERROR - Erro ao buscar o motorista no DF: 'float' object has no attribute 'upper'
+2025-05-21 12:54:02,582 - ERROR - Erro ao buscar o motorista no DF: index 0 is out of bounds for axis 0 with size 0
+2025-05-21 12:54:02,582 - ERROR - Erro ao buscar o motorista no DF: index 0 is out of bounds for axis 0 with size 0
+2025-05-21 12:54:02,636 - ERROR - Erro ao buscar o CR no DF: index 0 is out of bounds for axis 0 with size 0
+2025-05-21 12:54:02,637 - ERROR - Erro ao buscar o CR no DF: index 0 is out of bounds for axis 0 with size 0

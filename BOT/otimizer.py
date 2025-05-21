@@ -1,6 +1,7 @@
 import os
 import time
 import pandas as pd
+from numpy import ndarray
 
 from dotenv import load_dotenv
 from selenium import webdriver
@@ -48,10 +49,32 @@ class Armadura():
         self.name = name
         self.nameToSave = None
         self.download_path = r"C:\Users\edeconsil\Downloads"
+        self.df_DeepWeb_path = r"C:\Users\edeconsil\Documents\Luis - Programação\Automatização - BOT\Sources\DB - MOTORISTAS.xlsx"
         self.path = os.path.join(self.download_path, self.file)
 
         self._header = self.search_header(self.file)
+        self.df_DeepWeb_DATA = None
         self.__df = None
+
+        self.columns = {
+            "DATA INICIAL": 0,
+            "DATA": 0,
+            "HORA": 0,
+            "VEÍCULO": 0, 
+            "TAG": 0, 
+            "MOTORISTA": 0,
+            "DURAÇÃO": 0,
+            "DADOS ADICIONAIS": 0,
+            "ENDEREÇO": 0,
+            "VELOCIDADE": 0,
+            "LAT./LONG.": 0,
+            "LATITUDE": 0,
+            "LONGITUDE": 0,
+            "PLACA": 0,
+            "STATUS": 0,
+            "TEMPO OCIOSO": 0,
+        }
+        
        
     def search_header(self, file):
         header = 0
@@ -66,37 +89,67 @@ class Armadura():
 
         return header
 
+    def search_columns(self, column: str = None, set = False, should_print = False):
+        if should_print:
+            return self.columns
+
+        if isinstance(column, list) or isinstance(column, ndarray):  
+            for column_idx in column:
+                self.search_columns(column_idx, set = True)
+        else: 
+            if not set: 
+                return self.columns.get(column, 0) 
+            else:  
+                if self.columns.get(column, 0) == 1:
+                    self.columns[column] = 0
+                else:
+                    self.columns[column] = 1
+            
+       
+
     def read_file(self):
         df = pd.read_csv(self.path, encoding="ISO-8859-1", header = self._header, sep = ";")
         df.columns = df.columns.str.upper().str.strip()
-        if "DATA INICIAL" in df.columns:
+        self.search_columns(column = df.columns.values)
+
+        print(self.search_columns(should_print = True))
+
+        if self.search_columns("DATA INICIAL"):
             df.rename(columns = {"DATA INICIAL": "DATA"}, inplace = True)
+            self.search_columns(["DATA INICIAL", "DATA"], set = True)
+
             try:
                 df[["DATA", "HORA"]] = df["DATA"].astype(str).apply(lambda x: pd.Series(x.strip().split(" ")))
+                self.search_columns("HORA", set = True)
             except Exception as error:
                 print(f"Erro ao dividir hora da data: {error}")
 
-        if "VEÍCULO" in df.columns:
+        if self.search_columns("VEÍCULO"):
             df.rename(columns = {"VEÍCULO": "TAG"}, inplace = True)
+            self.search_columns(["VEÍCULO", "TAG"], set = True)
 
-        if "DADOS ADICIONAIS" in df.columns and "DURAÇÃO" not in df.columns:
+        if self.search_columns("DADOS ADICIONAIS")  and not self.search_columns("DURAÇÃO"):
             df.rename(columns = {"DADOS ADICIONAIS": "VELOCIDADE"}, inplace = True)
+            self.search_columns(["DADOS ADICIONAIS", "VELOCIDADE"])
+
             df = df[df["DATA"].notna() & df["VELOCIDADE"].notna()]
             df["VELOCIDADE"] = df["VELOCIDADE"].astype("int16")
 
-        elif "DADOS ADICIONAIS" in df.columns :
+        elif self.search_columns("DADOS ADICIONAIS"):
             df.drop("DADOS ADICIONAIS", axis = 1, inplace = True)
+            self.search_columns("DADOS ADICIONAIS", set = True)
 
-        elif "DURAÇÃO" in df.columns:  
-            df = df[df["DATA FINAL"].notna() | df["DURAÇÃO"].notna()]
+        elif self.search_columns("DURAÇÃO"):  
+            df = df[df["DATA FINAL"].notna() & df["DURAÇÃO"].notna()]
 
-        if "LAT./LONG." in df.columns:
+        if self.search_columns("LAT./LONG."):
             df[["LATITUDE", "LONGITUDE"]] = df["LAT./LONG."].astype(str).apply(lambda x: pd.Series(x.split(",")))
             df.drop("LAT./LONG.", axis = 1, inplace = True)
+            self.search_columns(["LATITUDE", "LONGITUDE", "LAT./LONG."], set = True)
         
         if "PLACA" in df.columns:
             df["PLACA"] = df["PLACA"].apply(lambda x: x.strip().upper())
-
+            self.search_columns("PLACA", set = True)
         self.__df = df
 
     def config_file(self):
@@ -130,14 +183,16 @@ class Armadura():
         
         df["TAG"] = df["TAG"].apply(lambda x: x.upper().strip().replace(" ", ""))
 
-        if "VELOCIDADE" in df.columns:
+        if self.search_columns("VELOCIDADE"):
             df["STATUS"] = df.apply(format_status, axis = 1)
+            self.search_columns("STATUS", set = True)
             df = df[df["STATUS"] == "ALTA"]
         
-        if "DURAÇÃO" in df.columns: 
+        if self.search_columns("DURAÇÃO"): 
             df["TEMPO OCIOSO"] = df["DURAÇÃO"].apply(format_time)
+            self.search_columns("TEMPO OCIOSO", set = True)
         
-        if "PLACA" in df.columns:
+        if self.search_columns("PLACA"):
             df["PLACA"] = df["PLACA"].apply(format_placa)
 
         hoje = datetime.today().date()
@@ -156,19 +211,48 @@ class Armadura():
 
         self.__df = df
 
+    def connection_db(self):
+        df_base = pd.read_excel(self.df_DeepWeb_path, sheet_name = "FINAL")
+        df_base.drop(columns = ["Unnamed: 0"], inplace = True)
+        df_base = df_base[["TAG", "MOTORISTA", "CR"]]
+        
+        self.df_DeepWeb_DATA = df_base
+
+    def read_db(self):
+        print(self.df_DeepWeb_DATA)
+
+    def get_motoristas(self, tag):
+        try:
+            return self.df_DeepWeb_DATA[self.df_DeepWeb_DATA["TAG"] == tag]["MOTORISTA"].values[0].upper().strip()
+        except Exception as e:
+            logger.error(f"Erro ao buscar o motorista no DF: {e}")
+            return None
+        
+    def get_CR(self, tag):
+        try:
+            return self.df_DeepWeb_DATA[self.df_DeepWeb_DATA["TAG"] == tag]["CR"].values[0].upper().strip()
+        except Exception as e:
+            logger.error(f"Erro ao buscar o CR no DF: {e}")
+            return None
+
+    def update_df(self):
+        self.__df["MOTORISTA"] = self.__df["TAG"].apply(self.get_motoristas)
+        self.__df["CR"] = self.__df["TAG"].apply(self.get_CR)
+        self.__df = self.__df
+
     def ordem_toSave(self):
         df = self.__df
         if "FORA_DO_HORARIO_GERAL" in self.file:
             self.nameToSave = "FORAHORARIO"
-            df = df[["DATA", "HORA", "TAG", "ENDEREÇO"]]
+            df = df[["DATA", "HORA", "TAG", "MOTORISTA", "CR", "ENDEREÇO"]]
         
         if "Velocidade_(Relatorio_para_robo)" in self.file:
             self.nameToSave = "VELOCIDADE"
-            df = df[["DATA", "HORA", "TAG", "MOTORISTA", "ENDEREÇO", "LATITUDE", "LONGITUDE", "VELOCIDADE", "STATUS"]]
+            df = df[["DATA", "HORA", "TAG", "MOTORISTA", "CR", "ENDEREÇO", "LATITUDE", "LONGITUDE", "VELOCIDADE", "STATUS"]]
 
         if "Tempo_Ocioso" in self.file:
             self.nameToSave =  "OCIOSIDADE_12v" if "12v" in self.file else "OCIOSIDADE_24V"
-            df = df[["DATA FINAL", "TAG", "ENDEREÇO", "DURAÇÃO", "TEMPO OCIOSO"]]
+            df = df[["DATA FINAL", "TAG", "MOTORISTA", "CR", "ENDEREÇO", "DURAÇÃO", "TEMPO OCIOSO"]]
 
         self.__df = df
 
@@ -186,6 +270,8 @@ class Armadura():
     def run(self):
         self.read_file()
         self.config_file()
+        self.connection_db()
+        self.update_df()
         self.ordem_toSave()
         self.save()
 
@@ -328,21 +414,25 @@ class Megatron(Motor):
         file.run()
 
     def run(self):
-
+        print("Analise de erro: ETAPA 1")
         self.login()
+        print("Analise de erro: ETAPA 2")
+        print("Erro está por aqui: v")
         self.config_relatorio()
+        print("Erro está por aqui: ^")
+        print("Analise de erro: ETAPA 3")
         self.adjust_data()
 
         #driver.quit()
 
 BASES = [
-    #("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
-    #("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
-    #("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
+    ("Velocidade_(Relatorio_para_robo)", "/relatorios/print?alias=CUSTOMIZADO&id=384"), 
+    ("Tempo_Ocioso_veiculos_de_12v", "/relatorios/print?alias=CUSTOMIZADO&id=218"),
+    ("Tempo_Ocioso_veiculos_de_24v", "/relatorios/print?alias=CUSTOMIZADO&id=389"),
     ("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
     ]
 
-for name, path in BASES:
-    bot = Megatron(name, path, days = 4)
-    bot.run()
 
+for name, path in BASES:
+    bot = Megatron(name, path, days = 1)
+    bot.run()
