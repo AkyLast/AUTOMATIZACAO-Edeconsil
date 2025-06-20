@@ -31,7 +31,7 @@ load_dotenv()
 class Motor():
     def __init__(self):
         self.options = webdriver.ChromeOptions()
-        # self.options.add_argument("--headless")
+        self.options.add_argument("--headless")
         self.options.add_argument("--no-sandbox")
         self.options.add_argument("--disable-dev-shm-usage")
         self.driver = None
@@ -386,7 +386,7 @@ class Armadura():
         self.delete_file()
 
 class Megatron(Motor):
-    def __init__(self, name: str, path: str, site: str,days: int = 1, TIMEOUT: int = 60):
+    def __init__(self, name: str, path: str, site: str,days: int = 1, TIMEOUT: int = 120):
         super().__init__()
         self.site = site
         self.name = name
@@ -671,7 +671,7 @@ BASES = {
             ("FORA_DO_HORARIO_GERAL", "/relatorios/print?alias=CUSTOMIZADO&id=375")
         ],
         "CEABS": [
-            ("Movimentação Fora do Horário Permitido", 0),
+            #("Movimentação Fora do Horário Permitido", 0),
             ("Velocidade", 0),
             ("Ociosidade ", 0)
         ]
@@ -679,8 +679,7 @@ BASES = {
 }
 
 for site, relatorios in BASES["SITES"].items():
-    if site == "CEABS":
+    if "CEABS" == site:
         for name, path in relatorios:
-            if name == "Velocidade":
-                bot = Megatron(site = site, name = name, path = path, days = 2)
-                bot.run()
+            bot = Megatron(site = site, name = name, path = path, days = 1)
+            bot.run()

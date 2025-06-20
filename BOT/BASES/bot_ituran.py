@@ -150,7 +150,7 @@ def login():
             arquivo = arquivo_baixado()
             if arquivo:
                 print(f"Download concluído: {arquivo}")
-                selecionar_formatacao(download_path, arquivo)
+                # selecionar_formatacao(download_path, arquivo)
                 break
             time.sleep(1)
         else:
@@ -223,15 +223,27 @@ def login():
         EC.element_to_be_clickable((By.XPATH, "//button[text()='Ok' and not(contains(@class, 'hidden'))]"))
     )
     element.click()
-    time.sleep(30)
 
     print("Clicando em exportar")
-    WebDriverWait(driver, 10).until(
+    btn_export = WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable((By.XPATH, "//span[@id='exportButton' and text()='Export']"))
-    ).click
-    print("btn clicador")
+    )
 
+    if btn_export:
+        print(btn_export.text)
+        btn_export.click()
 
+        print("btn clicador")
+
+    try:
+
+        btn_ok = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//button[@id='ModalWizard_OkButton_0']"))
+        )
+
+        btn_ok.click()
+    except:
+        time.sleep(360)
     
     time.sleep(TIMEOUT)  
 
