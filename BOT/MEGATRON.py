@@ -29,9 +29,10 @@ logger = logging.getLogger()
 load_dotenv()
 
 class Motor():
-    def __init__(self):
+    def __init__(self, headleass = True):
         self.options = webdriver.ChromeOptions()
-        # self.options.add_argument("--headless")
+        if headleass:
+            self.options.add_argument("--headless")
         self.options.add_argument("--no-sandbox")
         self.options.add_argument("--disable-dev-shm-usage")
         self.driver = None
@@ -42,7 +43,7 @@ class Motor():
         return driver
 
 class Armadura():
-    def __init__(self, file: str, name: str = None, status_site: str = None):
+    def __init__(self, file: str, name: str = None, status_site: str = None, start_date = None, end_date = None):
         self.status_site = status_site
         self.file = file
         self.name = name
@@ -54,6 +55,8 @@ class Armadura():
         self._header = self.search_header(self.file)
         self.df_DeepWeb_DATA = None
         self.__df = None
+        self.start_date = start_date
+        self.end_date = end_date
 
         self.columns = {
             "DATA INICIAL": 0,
@@ -84,7 +87,15 @@ class Armadura():
             "CONCLUÍDO POR": 0,
             "DATA DA CONCLUSÃO": 0,
             "LOCALIZAÇÃO": 0,
-            "PERMANÊNCIA": 0
+            "PERMANÊNCIA": 0,
+
+            'LOC TIME': 0, 
+            'VEHICLE NAME': 0, 
+            'DRIVER NAME': 0, 
+            'ADDRESS': 0, 
+            'SPEED': 0,
+            "IDLE TIME": 0,
+            "STATUS NAME": 0
         }
         
     def search_header(self, file):
@@ -97,10 +108,19 @@ class Armadura():
 
         elif "FORA_DO_HORARIO_GERAL" in file:
             header = 4
-        
-        elif not self.status_site:
-            header = 7
 
+        elif "Speeding_Report" in file:
+            header = 7
+        
+        elif "Idle_Report" in file:
+            header = 8
+
+        elif "Ignition_Report" in file:
+            header = 6
+
+        elif self.status_site == 0:
+            header = 7
+        
         return header
 
     def search_columns(self, column: str = None, set = False, should_print = False):
@@ -120,15 +140,18 @@ class Armadura():
                     self.columns[column] = 1
             
     def read_file(self):
-        if not self.status_site:
+        if self.status_site == 0:
             df = pd.read_excel(self.path, header = self._header)
-        else:
+        elif self.status_site == 1:
             df = pd.read_csv(self.path, encoding="ISO-8859-1", header = self._header, sep = ";")
+        elif self.status_site == 2:
+            df = pd.read_excel(self.path, header = self._header)
+            df.drop(columns = ["Status Name", "Rule Name", "POI Original", "POI Recalc", "Odometer"], inplace = True)
 
         df.columns = df.columns.str.upper().str.strip()
         self.search_columns(column = df.columns.values)
 
-        if self.status_site:
+        if self.status_site == 1:
             if self.search_columns("DATA INICIAL"):
                 df.rename(columns = {"DATA INICIAL": "DATA"}, inplace = True)
                 self.search_columns(["DATA INICIAL", "DATA"], set = True)
@@ -170,7 +193,7 @@ class Armadura():
                 df.drop("KM PERCORRIDA", axis = 1, inplace = True)
                 self.search_columns("KM PERCORRIDA", set = True)
             
-        elif not self.status_site:
+        elif self.status_site == 0:
             if self.search_columns("CÓD. VIOLAÇÃO"):
                 df.drop("CÓD. VIOLAÇÃO", axis = 1, inplace = True)
                 self.search_columns("CÓD. VIOLAÇÃO", set = True)
@@ -217,6 +240,38 @@ class Armadura():
                 df.rename(columns = {"DATA DO EVENTO": "DATA"}, inplace = True)
                 df[["DATA", "HORA"]] = df["DATA"].astype(str).apply(lambda x: pd.Series(x.strip().split(" ")))
                 self.search_columns(["DATA DO EVENTO", "DATA", "HORA"], set = True)
+        
+        elif self.status_site == 2:
+            df = df[~df['LOC TIME'].str.contains("Vehicle Name:|Summary", na=False)]
+            if self.search_columns("LOC TIME"):
+                df.rename(columns = {"LOC TIME": "DATA"}, inplace = True)
+                df[["DATA", "HORA"]] = df["DATA"].astype(str).apply(lambda x: pd.Series(x.strip().split(" ")))
+                self.search_columns(["LOC TIME", "DATA", "HORA"], set = True)
+            
+            if self.search_columns("VEHICLE NAME"):
+                df.rename(columns = {"VEHICLE NAME": "TAG"}, inplace = True)
+                df["TAG"] = df["TAG"].apply(lambda x: x.strip().upper())
+                self.search_columns(["VEHICLE NAME", "TAG"], set = True)
+            
+            if self.search_columns("DRIVER NAME"):
+                df.rename(columns = {"DRIVER NAME": "MOTORISTA"}, inplace = True)
+                self.search_columns(["DRIVER NAME", "MOTORISTA"], set = True)
+
+            if self.search_columns("ADDRESS"):
+                df.rename(columns = {"ADDRESS": "ENDEREÇO"}, inplace = True)
+                self.search_columns(["ADDRESS", "ENDEREÇO"], set = True)
+            
+            if self.search_columns("SPEED"):
+                df.rename(columns = {"SPEED": "VELOCIDADE"}, inplace = True)
+                self.search_columns(["SPEED", "VELOCIDADE"])
+
+                df = df[df["DATA"].notna() & df["VELOCIDADE"].notna()]
+                df["VELOCIDADE"] = df["VELOCIDADE"].astype("int16")
+
+            if self.search_columns("IDLE TIME"):
+                df.rename(columns = {"IDLE TIME": "DURAÇÃO"}, inplace = True)
+                self.search_columns(["IDLE TIME", "DURAÇÃO"], set = True)
+
         self.__df = df
 
     def config_file(self):
@@ -245,16 +300,16 @@ class Armadura():
             except Exception as error:
                 logger.error(f"Error ao formatar a placa: {error}")
                 return placa
-            
+
         df = self.__df
         
-        if self.status_site:
+        if self.search_columns("TAG"):
             df["TAG"] = df["TAG"].apply(lambda x: x.upper().strip().replace(" ", ""))
 
-            if self.search_columns("VELOCIDADE"):
-                df["STATUS"] = df.apply(format_status, axis = 1)
-                self.search_columns("STATUS", set = True)
-                df = df[df["STATUS"] == "ALTA"]
+        if self.search_columns("VELOCIDADE"):
+            df["STATUS"] = df.apply(format_status, axis = 1)
+            self.search_columns("STATUS", set = True)
+            df = df[df["STATUS"] == "ALTA"]
             
         if self.search_columns("DURAÇÃO"): 
             df["TEMPO OCIOSO"] = df["DURAÇÃO"].apply(format_time)
@@ -266,7 +321,37 @@ class Armadura():
         hoje = datetime.today().date()
         data_limite = datetime(2025, 6, 30).date()
 
-        if "FORA_DO_HORARIO_GERAL" in self.file:
+        if self.status_site == 0:
+            # print("Foramtação:",self.start_date, self.end_date)
+            try:
+                fim = pd.to_datetime(self.end_date, dayfirst=True)
+                inicio = pd.to_datetime(self.start_date, dayfirst=True)
+                df["DATA"] = pd.to_datetime(df["DATA"], dayfirst=True, format= "%d/%m/%Y")  
+                df = df[(df["DATA"] >= inicio) & (df["DATA"] <= fim)]
+                df["DATA"] = df["DATA"].dt.strftime("%d/%m/%Y")
+
+            except ValueError as e:
+                print(f"Erro ao converter as datas: {e}")
+        
+        if "Ignition_Report" in self.file or "Movimentação Fora do Horário Permitido" in self.name:
+            try:
+                limite_noite_inicio_str = "20:30:00"
+                limite_madrugada_fim_str = "05:30:00"
+                    
+                limite_noite_inicio = pd.to_datetime(limite_noite_inicio_str, format="%H:%M:%S").time()
+                limite_madrugada_fim = pd.to_datetime(limite_madrugada_fim_str, format="%H:%M:%S").time()
+                    
+                df.loc[:, 'HORA'] = pd.to_datetime(df['HORA'], format="%H:%M:%S").dt.time
+
+                df = df[
+                    (df['HORA'] >= limite_noite_inicio) | 
+                    (df['HORA'] <= limite_madrugada_fim)
+                ]
+                    
+            except ValueError as e:
+                print(f"Erro ao converter os horários: {e}")
+
+        if "FORA_DO_HORARIO_GERAL" in self.file or "Movimentação Fora do Horário Permitido" in self.name:
             if hoje <= data_limite:
                 df = df[~df["TAG"].isin([])]
 
@@ -340,20 +425,25 @@ class Armadura():
 
     def ordem_toSave(self):
         df = self.__df
-        if "FORA_DO_HORARIO_GERAL" in self.file or self.name == "Movimentação Fora do Horário Permitido":
-            self.nameToSave = "FORAHORARIO (rastreonline)" if self.status_site else "FORAHORARIO (ceabs)"
+        if "FORA_DO_HORARIO_GERAL" in self.file or self.name == "Movimentação Fora do Horário Permitido" or self.name == "Ignition_Report":
+            self.nameToSave = "FORAHORARIO (rastreonline)" if self.status_site == 1 else "FORAHORARIO (ceabs)" if self.status_site == 0 else "FORAHORARIO (ituran)"
             df = df[["DATA", "HORA", "TAG", "MOTORISTA", "CR", "ENDEREÇO"]]
         
-        if "Velocidade_(Relatorio_para_robo)" in self.file:
-            self.nameToSave = "VELOCIDADE"
-            df = df[["DATA", "HORA", "TAG", "MOTORISTA", "CR", "ENDEREÇO", "LATITUDE", "LONGITUDE", "VELOCIDADE", "STATUS"]]
+        if any(keyword in self.file for keyword in ["Velocidade_(Relatorio_para_robo)", "Speeding_Report"]) or self.name == "Velocidade":
+            if self.status_site == 1 or self.status_site == 0:
+                self.nameToSave = "VELOCIDADE (rastreonline)" if self.status_site == 1 else "VELOCIDADE (ceabs)"
+            elif self.status_site == 2:
+                self.nameToSave = "VELOCIDADE (ituran)"
+            
+            colunas = ["DATA", "HORA", "TAG", "MOTORISTA", "CR", "ENDEREÇO", "LATITUDE", "LONGITUDE", "VELOCIDADE", "STATUS"] \
+                if self.status_site != 2 else ["DATA", "HORA", "TAG", "MOTORISTA", "CR", "ENDEREÇO", "VELOCIDADE", "STATUS"]
+            df = df[colunas]
 
-        if "Tempo_Ocioso" in self.file or not self.status_site and "Ociosidade" in self.name:
-            self.nameToSave =  "OCIOSIDADE_12v" if "12v" in self.file else "OCIOSIDADE_24V" if self.status_site else "OCIOSIDADE (ceabs)"
-            if self.status_site:
-                df = df[["DATA FINAL", "TAG", "MOTORISTA", "CR", "ENDEREÇO", "DURAÇÃO", "TEMPO OCIOSO"]]
-            else:
-                df = df[["DATA", "HORA", "TAG", "MOTORISTA", "CR", "ENDEREÇO", "DURAÇÃO", "TEMPO OCIOSO"]]
+        if "Tempo_Ocioso" in self.file or self.status_site == 0 and "Ociosidade" in self.name or "Idle_Report" in self.name:
+            self.nameToSave =  "OCIOSIDADE_12v" if "12v" in self.file else "OCIOSIDADE_24V" if self.status_site == 1 else "OCIOSIDADE (ceabs)" if self.status_site == 0 else "OCIOSIDADE (ituran)"
+            
+            colunas = ["DATA FINAL", "TAG", "MOTORISTA", "CR", "ENDEREÇO", "DURAÇÃO", "TEMPO OCIOSO"] if self.status_site == 1 else ["DATA", "HORA", "TAG", "MOTORISTA", "CR", "ENDEREÇO", "DURAÇÃO", "TEMPO OCIOSO"]
+            df = df[colunas]
 
         self.__df = df
 
@@ -378,23 +468,24 @@ class Armadura():
 
     def run(self):
         self.read_file()
-        self.config_file()
         self.connection_db()
         self.update_df()
+        self.config_file()
         self.ordem_toSave()
         self.save()
         self.delete_file()
 
 class Megatron(Motor):
-    def __init__(self, name: str, path: str, site: str,days: int = 1, TIMEOUT: int = 60):
-        super().__init__()
+    def __init__(self, name: str, path: str, site: str,days: int = 1, TIMEOUT: int = 60, headless: bool = True):
+        super().__init__(headleass = headless)
         self.site = site
         self.name = name
         self.path = path
         self.file = None
         self.days = days
-        self.status_login = 1 if site == "RASTREONLINE" else 0
-
+        self.start_date = None
+        self.end_date = None
+        self.status_login = 1 if self.site == "RASTREONLINE" else 0 if self.site == "CEABS" else 2 # ituran
 
         self.TIMEOUT = TIMEOUT
         self.havedata = True
@@ -406,7 +497,7 @@ class Megatron(Motor):
 
         print("analise de status:", self.status_login)
 
-        if self.status_login:
+        if self.status_login == 1:
             driver.get("https://rastreioonline.seeflex.com.br/users/login")
             time.sleep(2)
 
@@ -443,7 +534,7 @@ class Megatron(Motor):
             logger.info("Relatório encontrado e indo para o caminho!")
             logger.info("Logado com sucesso!!!!")
 
-        else:
+        elif self.status_login == 0:
             driver.get("https://cps.ceabs.com.br/Login/")
             time.sleep(2)
             
@@ -480,9 +571,33 @@ class Megatron(Motor):
             driver.get("https://cps.ceabs.com.br/AlertaViolacoes/Index")
             time.sleep(1)
 
+        elif self.status_login == 2:
+            driver.get("https://iweb.ituran.com.br/iweb2/login.aspx")
+            time.sleep(2)
+
+            USERNAME = os.getenv("USERNAME_ITURAN")
+            PASSWORD = os.getenv("PASWORD_ITURAN")
+
+            print("Fazendo Login")
+            WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.ID, "txt_username"))
+            )
+            driver.find_element(By.ID, "txt_username").send_keys(USERNAME)
+            driver.find_element(By.ID, "txt_password").send_keys(PASSWORD)
+            driver.find_element(By.XPATH, '//input[@type="submit"]').click()
+            print("Login Feito")
+            time.sleep(5)
+
+            print("Indo por Relatórios")
+
+            WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.ID, "Main_ReportsandPlaybackImg"))
+            )
+            driver.get("https://iweb.ituran.com.br/iweb2/PeleReports/Pelereports.aspx")
+
     def config_relatorio(self):
         driver = self.driver
-        if self.status_login:
+        if self.status_login == 1:
             hoje = datetime.today()
             dias_anteriores = hoje - timedelta(days=self.days)
             d_1 = hoje - timedelta(days = 1) # d-1
@@ -546,7 +661,20 @@ class Megatron(Motor):
             botao_pesquisa.click()  
             logger.info("Bottton of search on clicked")
         
-        else:
+        elif self.status_login == 0:
+            hoje = datetime.today()
+            dias_anteriores = hoje - timedelta(days=self.days)
+            if self.name == "Movimentação Fora do Horário Permitido":
+                d_1 = hoje - timedelta(days = 0)
+            else:
+                d_1 = hoje - timedelta(days = 1) # d-1
+
+            fim = d_1.strftime('%d/%m/%Y')  
+            inicio = dias_anteriores.strftime('%d/%m/%Y')
+
+            self.start_date = inicio
+            self.end_date = fim
+
             elements = WebDriverWait(driver, 10).until(
                 EC.presence_of_all_elements_located((By.XPATH, "//div[@class='form-group']//div[@class='chosen-group']"))
             )
@@ -613,7 +741,81 @@ class Megatron(Motor):
             except:
                 print("Botão não encontrado.")
 
-        if self.havedata: self.download_file()
+        elif self.status_login == 2:
+            hoje = datetime.today()
+            dias_anteriores = hoje - timedelta(days=self.days)
+            d_1 = hoje - timedelta(days = 1) # d-1
+            
+            select_element = driver.find_element(By.NAME, "SelectReportType")
+            select = Select(select_element)
+            if self.name == "Speeding_Report":
+                select.select_by_value("4")
+            elif self.name == "Idle_Report":
+                select.select_by_value("9") 
+            elif self.name == "Ignition_Report":
+                d_1 = hoje - timedelta(days = 0)
+                select.select_by_value("7") 
+
+            fim = d_1.strftime('%d/%m/%Y')
+            inicio = dias_anteriores.strftime('%d/%m/%Y')
+
+            script_javascript = f"$('#fromInput').datepicker('setDate', '{inicio}');"
+            driver.execute_script(script_javascript)
+            script_javascript = f"$('#toInput').datepicker('setDate', '{fim}');"
+            driver.execute_script(script_javascript)
+
+            hora_desejada = '23:59:59'
+            script_javascript = f"$('#end_time').val('{hora_desejada}');"
+            driver.execute_script(script_javascript)
+
+            WebDriverWait(driver, 2).until(
+                EC.presence_of_element_located((By.NAME, "SelectReportParameter"))
+            )
+            select_element = driver.find_element(By.NAME, "SelectReportParameter")
+            select = Select(select_element)
+            if self.name == "Speeding_Report":
+                select.select_by_value("85")
+            elif self.name == "Idle_Report":
+                select.select_by_value("15.00") 
+            
+            driver.find_element(By.XPATH, "//a[@href='#tab-3']").click()
+            time.sleep(2)
+
+            WebDriverWait(driver, 10).until(
+                EC.presence_of_element_located((By.CLASS_NAME, "fancytree-checkbox"))
+            ).click()
+            time.sleep(2)                     
+
+            driver.find_element(By.XPATH, "//a[@href='#tab-9']").click()
+
+            driver.find_element(By.ID, "reportButton").click()
+
+            element = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, "//button[text()='Ok' and not(contains(@class, 'hidden'))]"))
+            )
+            element.click()
+
+            print("Clicando em exportar")
+            btn_export = WebDriverWait(driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, "//span[@id='exportButton' and text()='Export']"))
+            )
+
+            if btn_export:
+                print(btn_export.text)
+                btn_export.click()
+                print("btn clicador")
+
+            try:
+                btn_ok = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.XPATH, "//button[@id='ModalWizard_OkButton_0']"))
+                )
+
+                btn_ok.click()
+            except:
+                print("Erro ao baixar o relatório")
+
+        if self.havedata: 
+            self.download_file()
         driver.quit()
 
     def download_file(self):
@@ -644,23 +846,17 @@ class Megatron(Motor):
     
     def adjust_data(self):
         if self.havedata:
-            file = Armadura(self.file, name = self.name, status_site = self.status_login)
+            file = Armadura(self.file, name = self.name, status_site = self.status_login, start_date = self.start_date, end_date = self.end_date)
             file.run()
         else:
             print("Nenhum aquivo baixado")
 
     def run(self):
-        print("Analise de erro: ETAPA 1")
         self.login()
-        print("Analise de erro: ETAPA 2")
         print("Erro está por aqui: v")
         self.config_relatorio()
         print("Erro está por aqui: ^")
-        print("Analise de erro: ETAPA 3")
         self.adjust_data()
-
-        #driver.quit()
-
 
 BASES = {
     "SITES": {
@@ -674,13 +870,21 @@ BASES = {
             ("Movimentação Fora do Horário Permitido", 0),
             ("Velocidade", 0),
             ("Ociosidade ", 0)
+        ],
+        "ITURAN": [
+            ("Speeding_Report", 0),
+            ("Idle_Report", 0),
+            ("Ignition_Report", 0)
         ]
     }
 }
 
 for site, relatorios in BASES["SITES"].items():
-    if site == "CEABS":
+    if site:
         for name, path in relatorios:
-            if name == "Velocidade":
-                bot = Megatron(site = site, name = name, path = path, days = 2)
-                bot.run()
+            if name:
+                try:
+                    bot = Megatron(site = site, name = name, path = path, days = 1, headless = True)
+                    bot.run()
+                except Exception as e:
+                    print(f"Erro ao fazer a busca do arquivo {name}. Erro: {e}")

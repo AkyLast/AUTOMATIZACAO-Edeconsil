@@ -14,8 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 load_dotenv()
 
-data = None
-def mesclar_arquivos(download_path, arquivo_baixado=None, name = None):
+def mesclar_arquivos(download_path, arquivo_baixado=None, name = None, data = None):
     base = r"C:\Users\edeconsil\Documents"
     
     # Lista para armazenar os DataFrames
@@ -53,10 +52,11 @@ def mesclar_arquivos(download_path, arquivo_baixado=None, name = None):
     print(f"Arquivos mesclados com sucesso em '{arquivo_base_path}'.")
 
 class Downloader:
-    def __init__(self, name):
+    def __init__(self, name, data):
         self.download_path = r"C:\Users\edeconsil\Downloads"
         self.name = name
         self.file = None
+        self.data = data
     
     def download_file(self, timeout=20):
         start_time = time.time()
@@ -66,7 +66,7 @@ class Downloader:
                 print(f"Download concluído: {arquivo}")
                 self.file = arquivo
                 # Chama a função para mesclar os arquivos
-                mesclar_arquivos(self.download_path, arquivo_baixado=arquivo, name = self.name)
+                mesclar_arquivos(self.download_path, arquivo_baixado=arquivo, name = self.name, data = self.data)
                 break
             time.sleep(1)
         else:
@@ -82,7 +82,7 @@ class Downloader:
 
 
 options = webdriver.ChromeOptions()
-#options.add_argument('--headless')
+# options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 
@@ -152,9 +152,11 @@ def navegar(days_start: int, days_end: int = None):
         global data 
         data = data_atual
         dd, mm, yy = data_atual.split("/")
+        dd = days_start
+        data = f"{dd}/{mm}/{yy}"
 
 
-        obj_downloader = Downloader(name = name_file)
+        obj_downloader = Downloader(name = name_file, data = data)
 
         days_start_select = None
         days_end_select = None
@@ -199,7 +201,7 @@ def navegar(days_start: int, days_end: int = None):
             )
 
                 #for i in range(days_start, 30)
-            
+        
             select_ok = None
             for analisar_ok in ok_:
                 if analisar_ok.text.strip() == "OK":
@@ -228,11 +230,9 @@ def navegar(days_start: int, days_end: int = None):
         items = WebDriverWait(driver, 10).until(
             EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".v-menu__content>.v-list>.v-list-item"))
         )
-        print()
+        # print(items[i].text)
         baixar(items[i], entradas, items[i].text)
         driver.refresh()
         time.sleep(1)
 
-    time.sleep(600)
-
-navegar(days_start = 29)
+navegar(days_start = 20)
